@@ -197,15 +197,6 @@ export default function Services({isSignIn, setIsSignIn, setCartItems, cartItems
 			setData(newData)
 		}
 		
-		// let details = {
-		// 	"Year": filter.Year,
-		// 	"Make": filter.Make,
-		// 	"Model": filter.Model,
-		// 	"Category": filter.Category,
-		// 	"Mileage": filter.Mileage,
-		// 	"Color": filter.Color,
-		// 	"Price": filter.Price
-		// }
 	}
 	return (
 	<>
