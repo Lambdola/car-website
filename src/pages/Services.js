@@ -230,7 +230,7 @@ function Repairs({repairs_database, setCartItems, cartItems, repairService, setR
 }
 
 function Content({stat, data, repairs_database, filter, handleFilterChange, handleSubmit, salesInfo, setSalesInfo, setCartItems, cartItems,  repairService, setRepairService, setCount}) {
-	useEffect(()=>{window.scrollTo(0, 0);},[])
+	useEffect(()=>{window.scrollTo(0, 0);},[]);
 	if (stat === "sales") {
 		return < Sales 
 				 data={data} 

@@ -37,7 +37,7 @@ export default function Home({isSignIn, setIsSignIn, signInWelcome, setSignInWel
     return (
         <>
         {signInWelcome === "show" && <PopUp addedPrompt={signInWelcome} text="Logged In Successfully !"  />}
-        <div className="bg-white max-w-sm">
+        <div className="bg-white">
            <BackToTop />
             <div className='overflow-hidden'>
                 {/* <Header isSignIn={isSignIn} setIsSignIn={setIsSignIn} /> */}

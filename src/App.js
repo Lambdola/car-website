@@ -13,6 +13,7 @@ import AboutUs from './pages/AboutUs';
 import ContactUs from './pages/ContactUs';
 import Cart from './pages/Cart';
 import { useEffect, useState } from 'react';
+import TestSite from './pages/TestSite';
 
 
 // xsm:bg-slate-900 
@@ -29,7 +30,8 @@ export default function App() {
   const [isSignIn, setIsSignIn] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [count, setCount] = useState(0);
-  const [signInWelcome, setSignInWelcome] = useState("")
+  const [signInWelcome, setSignInWelcome] = useState("");
+  const [cartTotalPrice, setCartTotalPrice] = useState(0);
 
 
   useEffect(()=>{
@@ -51,7 +53,8 @@ export default function App() {
         <Route path="/reviews" element={<Reviews isSignIn={isSignIn} setIsSignIn={setIsSignIn} />} />
         <Route path="/about-us" element={<AboutUs isSignIn={isSignIn} setIsSignIn={setIsSignIn} />} />
         <Route path="/contact-us" element={<ContactUs isSignIn={isSignIn} setIsSignIn={setIsSignIn} cartItems={cartItems} />} />
-        <Route path="/cart" element={<Cart isSignIn={isSignIn} setIsSignIn={setIsSignIn} setCartItems={setCartItems} cartItems={cartItems} count={count} setCount={setCount} cartCount={cartCount}  />} />
+        <Route path="/cart" element={<Cart isSignIn={isSignIn} setIsSignIn={setIsSignIn} setCartItems={setCartItems} cartItems={cartItems} count={count} setCount={setCount} cartCount={cartCount} cartTotalPrice={cartTotalPrice} setCartTotalPrice={setCartTotalPrice} />} />
+        <Route path="/test-site" element={<TestSite isSignIn={isSignIn} setIsSignIn={setIsSignIn} />} />
       </Routes>
     </>
   );

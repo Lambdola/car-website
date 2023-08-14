@@ -1,6 +1,6 @@
 // CartInfo is a child component of Cart component
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import CloseIcon from '@mui/icons-material/Close';
 import { red } from '@mui/material/colors';
@@ -8,8 +8,9 @@ import RemovePrompt from './RemovePrompt';
 import Remove from './Remove';
 
 
-function CartInfo({salesInfo, image, setCartItems, cartItems, setCount}) {
+function CartInfo({salesInfo, image, setCartItems, cartItems, setCount, setCartTotalPrice, priceFormat}) {
     const [ removePrompt, setRemovePrompt ] = useState("hide");
+ 
 
     function addToCart(param) {
         let user = localStorage.getItem("user");
@@ -55,12 +56,13 @@ function CartInfo({salesInfo, image, setCartItems, cartItems, setCount}) {
         setRemovePrompt("hide");
     }
 
+
    
 
   return (
     <>
     { removePrompt === "show" && <RemovePrompt setRemovePrompt={setRemovePrompt} cartItems={cartItems} setCartItems={setCartItems} salesInfo={salesInfo} /> }
-    
+    {/* {setCartTotalPrice(prevPrice => prevPrice + priceFormat(salesInfo.Price))} */}
     { salesInfo.Count > 0 && 
     <div className=' w-80 mx-auto mb-10 p-1 pb-3 rounded-lg border-4 border-purple-900'>
         {salesInfo.url ? <img src={salesInfo.url} alt={salesInfo.Year + " " + salesInfo.Make + " " + salesInfo.Model + " " + salesInfo.Category} className='w-80' /> : <img src={image} alt="Display Image Car." className='w-80' /> }

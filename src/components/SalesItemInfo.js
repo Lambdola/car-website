@@ -8,7 +8,7 @@ import PopUp from './PopUp';
 function SalesItemInfo({salesInfo, car1, setCartItems, cartItems, tag}) {
     const [ addedPrompt, setAddedPrompt ] = useState("hidden");
     let navigate = useNavigate();
-    useEffect(()=> {window.scrollTo(0, 0);}, [])
+    useEffect(()=> {window.scrollTo(0, 0);}, []);
 
     let user = localStorage.getItem("user");
     user = JSON.parse(user); 
@@ -86,7 +86,7 @@ function SalesItemInfo({salesInfo, car1, setCartItems, cartItems, tag}) {
     return (
         <>
         {addedPrompt === "show" && <PopUp addedPrompt={addedPrompt} text="Item Added Successfully !"  />}
-    <div className='bg-green-200 w-80 mx-auto mb-10 p-1 pb-3 rounded-lg border-4 border-purple-900'>
+    <div className='bg-green-200 w-80 mx-auto mb-20 p-1 pb-3 rounded-lg border-4 border-purple-900'>
         {salesInfo.url ? <img src={salesInfo.url} alt={salesInfo.Year + " " + salesInfo.Make + " " + salesInfo.Model + " " + salesInfo.Category} className='w-80' /> : <img src={car1} alt="Display Car." className='w-80' /> }
         <div className='p-2 text-center space-y-2'>
             <h2 className='font-bold text-purple-800 text-lg'>{salesInfo.Year + " " + salesInfo.Make + " " + salesInfo.Model + " " + salesInfo.Category}</h2>
@@ -112,6 +112,7 @@ function SalesItemInfo({salesInfo, car1, setCartItems, cartItems, tag}) {
                 : <button name="rentals" onClick={addToCart} className='text-white font-bold bg-purple-700 p-3 text-lg rounded-xl hover:bg-purple-900 active:bg-green-600'>RENT CAR</button>
             }
         </div>
+        <p className='my-2 mx-1 p-2 bg-red-300 text-center text-red-800 font-bold'>You can come to the store to check out the car before proceeding to make payment.</p>
     </div> </>
     )
 }
