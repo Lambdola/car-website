@@ -1,5 +1,5 @@
 import React , {useEffect} from 'react'
-import Header from '../components/Header'
+
 
 function AboutUs({isSignIn, setIsSignIn}) {
   useEffect(()=> {
@@ -13,9 +13,9 @@ function AboutUs({isSignIn, setIsSignIn}) {
 
   return (
    <>
-	<Header isSignIn={isSignIn} setIsSignIn={setIsSignIn} />
-	<h1 className='font-bold text-xl text-center'>ABOUT US</h1>
+    <h1 className='font-bold text-xl text-center'>ABOUT US</h1>
     <div className='border-2 border-black m-2'></div>
+    
    </>
   )
 }

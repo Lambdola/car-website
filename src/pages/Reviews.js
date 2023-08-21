@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Header from '../components/Header';
-import cat from '../cat.jpg';
+import cat from '../images/cat.jpg';
 import BackToTop from '../components/BackToTop';
 
 function Reviews({isSignIn, setIsSignIn}) {

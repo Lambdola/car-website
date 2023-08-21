@@ -11,7 +11,7 @@ function NewMember({handleLogInDisplay, handleSubmit,details, handleDetailsChang
     setTimeout(() => navigate("/"),2000)
   }
   return (
-    <>
+    <div className=' md:w-2/3 md:mx-auto md:text-xl'>
       <div className='space-x-4 mb-4'>
         <span className='font-bold text-slate-400'>Already have an account ?</span>
         <NavLink name="logIn" onClick={handleLogInDisplay} className='font-bold text-blue-600 hover:text-blue-800 active:text-green-600'>Log In</NavLink>
@@ -70,7 +70,7 @@ function NewMember({handleLogInDisplay, handleSubmit,details, handleDetailsChang
           <button type="submit" className={`text-white font-bold bg-purple-700 w-auto p-3 text-lg rounded-xl hover:bg-purple-900 active:bg-green-600`}>Create Account</button>
           </div>
       </form>
-    </>
+    </div>
   )
 }
 
@@ -86,13 +86,13 @@ function NotNewMember({handleLogInDisplay, handleLogInSubmit, setUserLogInDetail
 
 
   if (hasAccount === "yes") {
-    setTimeout(() => navigate("/"),2000);
+    setTimeout(() => navigate("/"),1000);
   }else if (hasAccount === "no"){
     show = "visible"
   }
 
   return (
-    <>
+    <div className=' md:w-2/3 md:mx-auto md:text-xl'>
       <div className=' mb-4 flex flex-wrap gap-2'>
         <span className='font-bold text-slate-400'>Don't have an account ? </span>
         <NavLink name="createAccount" onClick={handleLogInDisplay} className='font-bold text-blue-700 hover:text-blue-800 active:text-green-600'>Create An Account</NavLink>
@@ -115,7 +115,7 @@ function NotNewMember({handleLogInDisplay, handleLogInSubmit, setUserLogInDetail
           </div>
         </form>
       </div>
-    </>
+    </div>
   )
 }
 
