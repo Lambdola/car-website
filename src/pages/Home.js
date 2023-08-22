@@ -15,6 +15,8 @@ import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
 import { purple } from '@mui/material/colors';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import CartContent from '../components/CartContent';
+import jf from '@mui/icons-material/Settings'
+import { Settings } from '@mui/icons-material';
 
 
 export default function Home({isSignIn, setCartItems, setIsSignIn, signInWelcome, setSignInWelcome}) {
@@ -89,14 +91,48 @@ export default function Home({isSignIn, setCartItems, setIsSignIn, signInWelcome
                 {/* Main Secton */}
                 <div className='md:landscape:w-2/3 md:landscape:mx-auto md:portrait:float-right md:portrait:w-[59%] md:mt-3'>
                     <QuickFind />
-                    <div>
-                        <h2>Why we are the perfect company for you</h2>
-                        Timeliness, Order/Intact,Trustworthy,Accuracy and Efficiency, Reputable and Reliable, Home Services, Mobile Workshop.
-                    </div>
                     <div className='my-10 '>
                         <Gallery />
                     </div>
-                    
+
+                    <div className='bg-slate-200 p-3'>
+                        <h2 className='text-gray-900 font-bold text-center'>Why Us </h2>
+                        <div className='space-y-5'>
+                            <div className='text-center bg-slate-600'>
+                                <div className='w-full h-40 bg-blue-400'></div>
+                                <p className='text-slate-300'>Timeliness</p>
+                            </div>
+                            <div className='text-center bg-slate-600'>
+                                <div className='w-full h-40 bg-blue-400'></div>
+                                <p className='text-slate-300'>What you order is what you get and more !</p>
+                            </div>
+                            <div className='text-center bg-slate-600'>
+                                <div className='w-full h-40 bg-blue-400'></div>
+                                <p className='text-slate-300'>Trustworthy</p>
+                            </div>
+                            <div className='text-center bg-slate-600'>
+                                <div className='w-full h-40 bg-blue-400'></div>
+                                <p className='text-slate-300'>Accuracy and Efficiency</p>
+                            </div>
+                            <div className='text-center bg-slate-600'>
+                                <div className='w-full h-40 bg-blue-400'></div>
+                                <p className='text-slate-300'>Reputable and Reliable</p>
+                            </div>
+                            <div className='text-center bg-slate-600'>
+                                <div className='w-full h-40 bg-blue-400'></div>
+                                <p className='text-slate-300'>Home Service</p>
+                            </div>
+                            <div className='text-center bg-slate-600'>
+                                <div className='w-full h-40 bg-blue-400'></div>
+                                <p className='text-slate-300'>Mobile Workshop</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="staf" className='w-full h-64 bg-red-300'>
+                        {/* <p>Ola</p> */}
+                        
+
+                    </div>
                     
                     <div className=''>
                         <div className='m-1 w-auto h-42 text-center p-4 space-y-8 mb-4 md:text-2xl'>
