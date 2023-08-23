@@ -41,7 +41,7 @@ function Gallery() {
       <div className='relative w-full border bg-slate-900 text-center py-3 h-[25rem] md:h-[30rem]
       '>
         <div className='absolute bottom-0 bg-yellow-400 w-full h-44 '></div>
-        <div className='relative'>
+        <div className='relative lg:portrait:-mt-2'>
           <h2 className='text-white text-2xl mb-3'>WHAT WE CAN DO FOR YOU </h2>
           <div>
             <div id="gallery" onClick={handleClick} className='w-[21rem] h-56 mx-auto md:w-full md:p-2 md:h-80 '>

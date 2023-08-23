@@ -123,6 +123,7 @@ function Repairs({repairs_database, setCartItems, cartItems, repairService, setR
 		setDetails({...details,[name]: value });
 	}
 
+
 	function handleSearchSubmit(e) {
 		e.preventDefault();
 		setKeyWords({...keyWords, "word": keyWords.search});
@@ -130,7 +131,6 @@ function Repairs({repairs_database, setCartItems, cartItems, repairService, setR
 				(items) => items.title.toLowerCase().includes(keyWords.search.toLowerCase())
 			)
 		);
-		
 	}
 
 	return (

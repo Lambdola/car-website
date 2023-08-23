@@ -52,15 +52,16 @@ export default function App() {
     }
   },[]);
   
+  // xsm:bg-lime-500
+  // sm:bg-red-500 
+  // md:bg-fuchsia-500
+  // lg:bg-yellow-500
+  // xl:bg-orange-600
+  // 2xl:bg-blue-500 
 
   return (
-    <div className='relative selection:bg-purple-500
-    xsm:bg-lime-500
-    sm:bg-red-500 
-    md:bg-fuchsia-500
-    lg:bg-yellow-50
-    xl:bg-orange-600
-    2xl:bg-blue-500
+    <div className='relative selection:bg-violet-400
+
     '>
       <div className=' md:w-full md:z-10'>
          <Header isSignIn={isSignIn} setIsSignIn={setIsSignIn} cartItems={cartItems} cartCount={cartCount} />
