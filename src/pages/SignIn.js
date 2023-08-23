@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import Header from '../components/Header';
 import { NavLink, redirect, useNavigate } from 'react-router-dom';
 
-let hasAccount = "no";
 
-function NewMember({handleLogInDisplay, handleSubmit,details, handleDetailsChange, status, enable, submitCreateAccount}) {
+function NewMember({handleLogInDisplay, handleSubmit,details, handleDetailsChange, status}) {
   let navigate = useNavigate();
   
   if (redirect === "yes") {
-    setTimeout(() => navigate("/"),2000)
+    setTimeout(() => navigate("/"),2000);
   }
   return (
     <div className=' md:w-2/3 md:mx-auto md:text-xl'>
@@ -71,24 +69,23 @@ function NewMember({handleLogInDisplay, handleSubmit,details, handleDetailsChang
           </div>
       </form>
     </div>
-  )
+  );
 }
 
 
 function NotNewMember({handleLogInDisplay, handleLogInSubmit, setUserLogInDetails,userLogInDetails, hasAccount, setHasAccount}) {
   const navigate = useNavigate();
-  const [refresh, setRefresh] = useState("")
   let show = "hidden";
 
   function handleLogIn(e) {
-    setUserLogInDetails({...userLogInDetails, [e.target.name]: e.target.value})
+    setUserLogInDetails({...userLogInDetails, [e.target.name]: e.target.value});
   }
 
 
   if (hasAccount === "yes") {
     setTimeout(() => navigate("/"),1000);
   }else if (hasAccount === "no"){
-    show = "visible"
+    show = "visible";
   }
 
   return (
@@ -116,7 +113,7 @@ function NotNewMember({handleLogInDisplay, handleLogInSubmit, setUserLogInDetail
         </form>
       </div>
     </div>
-  )
+  );
 }
 
 function SignIn({setIsSignIn, signInWelcome, setSignInWelcome}) {
@@ -142,30 +139,29 @@ function SignIn({setIsSignIn, signInWelcome, setSignInWelcome}) {
   const [newMember, setNewMember] = useState(true);
   const [hasAccount, setHasAccount] = useState("");
   const [enable, setEnable] = useState("no");
-  const [submitCreateAccount, setSubmitCreateAccount] = useState(0);
   let navigate = useNavigate();
   useEffect(()=> window.scrollTo(0, 0), []);
 
 
   function handleLogInDisplay(e) {
     if (e.target.name === "logIn"){
-      setNewMember(false)
+      setNewMember(false);
     }else if (e.target.name === "createAccount"){
-      setNewMember(true)
+      setNewMember(true);
     }
   }
 
   const [userLogInDetails, setUserLogInDetails ] = useState({
     "emai": "",
     "password": ""
-  })
+  });
 
   function hash(value) {
     const KEY = 5;
     let newValue = "";
     for (let char in value) {
       let newChar = char.charCodeAt(0) + KEY ;
-      newValue += String.fromCharCode(newChar)
+      newValue += String.fromCharCode(newChar);
     }
     return newValue;
   }
@@ -179,31 +175,32 @@ function SignIn({setIsSignIn, signInWelcome, setSignInWelcome}) {
       value = hash(value);
     }
     if (name === "picture") {
-      alert(value)
-      let path = "C:\\Users\\User.DESKTOP-8DCLUDU\\Pictures\\"
-      value = path + value.replace("C:\\fakepath\\","")
-      alert(value)
+      let path = "C:\\Users\\User.DESKTOP-8DCLUDU\\Pictures\\";
+      value = path + value.replace("C:\\fakepath\\","");
     }
-    setDetails({...details,[name]: value })
+    setDetails({...details,[name]: value });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    let newStatus = {}
+    let newStatus = {};
     if (details.email !== details.confirmEmail) {
-      newStatus.emailMatch = false
-    } else { newStatus.emailMatch = true }
+      newStatus.emailMatch = false;
+    } else { 
+      newStatus.emailMatch = true;
+    }
 
     if (details.password !== details.confirmPassword) {
-      newStatus.passwordMatch = false
-    } else { newStatus.passwordMatch = true }
+      newStatus.passwordMatch = false;
+    } else { 
+      newStatus.passwordMatch = true; 
+    }
    
-    let newDetails = {...details, "loggedIn": "false"}
-    localStorage.setItem("user", JSON.stringify(newDetails))
-    let redirect = "yes";
-    setEnable(n => setEnable("yes"))
-    setStatus(n => setStatus(newStatus))
-    setTimeout(()=>navigate("/"),2000)
+    let newDetails = {...details, "loggedIn": "false"};
+    localStorage.setItem("user", JSON.stringify(newDetails));
+    setEnable(n => setEnable("yes"));
+    setStatus(n => setStatus(newStatus));
+    setTimeout(()=>navigate("/"),2000);
   }
 
   
@@ -213,19 +210,18 @@ function SignIn({setIsSignIn, signInWelcome, setSignInWelcome}) {
     user = JSON.parse(user);
     let updateDetails;
     if ((userLogInDetails.emai === user.email) && (hash(userLogInDetails.password) === user.password)) {
-      updateDetails = {...user, "loggedIn": "true"}
-      localStorage.setItem("user", JSON.stringify(updateDetails))
-      setHasAccount(n => setHasAccount("yes"))
+      updateDetails = {...user, "loggedIn": "true"};
+      localStorage.setItem("user", JSON.stringify(updateDetails));
+      setHasAccount(n => setHasAccount("yes"));
       setIsSignIn(true);
       setSignInWelcome("show");
     } else {
-      setHasAccount("no")
+      setHasAccount("no");
     }
   }
 
   return (
     <>
-      {/* <Header /> */}
       <h1 className='font-bold text-xl text-center'>SIGN IN</h1>
       <div className='border-2 border-black m-2'></div>
       <div className=' px-3'>
@@ -238,7 +234,6 @@ function SignIn({setIsSignIn, signInWelcome, setSignInWelcome}) {
             status={status}
             redirect={redirect}
             enable={enable}
-            submitCreateAccount={submitCreateAccount}
           /> : 
           < NotNewMember 
             handleLogInDisplay={handleLogInDisplay} 

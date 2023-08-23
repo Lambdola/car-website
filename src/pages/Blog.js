@@ -1,8 +1,7 @@
 import React, {useEffect} from 'react';
-import Header from '../components/Header';
 import BackToTop from '../components/BackToTop';
 
-function Blog({isSignIn, setIsSignIn}) {
+function Blog({setIsSignIn}) {
     useEffect(()=> {
         window.scrollTo(0, 0);
         let user = localStorage.getItem("user");
@@ -10,11 +9,10 @@ function Blog({isSignIn, setIsSignIn}) {
         if(user.loggedIn === "true"){
           setIsSignIn(true);
         }
-      },[])
+      },[setIsSignIn]);
 
     return (
     <>
-        {/* <Header isSignIn={isSignIn} /> */}
         <BackToTop />
         <h1 className='font-bold text-xl text-center'>BLOG POSTS</h1>
         <div className='border-2 border-black m-2'></div>
@@ -36,7 +34,7 @@ function Blog({isSignIn, setIsSignIn}) {
             </div>
         </div>
     </>
-    )
+    );
     }
 
-export default Blog
+export default Blog;

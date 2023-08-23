@@ -1,30 +1,18 @@
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-// import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Header from '../components/Header';
 import Footer from '../components/Footer';
 import QuickFind from '../components/QuickFind';
 import ViewCatalogue from '../components/ViewCatalogue';
 import Gallery from '../components/Gallery';
 import BackToTop from '../components/BackToTop';
-import cat from '../images/cat.jpg'
 import car2 from '../images/car2.jpg';
 import PopUp from '../components/PopUp';
-import hamburger from '../images/hamburger.svg'
-import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
-import { purple } from '@mui/material/colors';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import CartContent from '../components/CartContent';
-import jf from '@mui/icons-material/Settings'
-import { Settings } from '@mui/icons-material';
 
 
 export default function Home({isSignIn, setCartItems, setIsSignIn, signInWelcome, setSignInWelcome}) {
     useEffect(()=> {
-        // alert("Reload")
-        // window.scrollTo(0, 0);
         let user = localStorage.getItem("user");
-        user = JSON.parse(user)
+        user = JSON.parse(user);
         if(user.loggedIn === "true"){
             setIsSignIn(n => true);
             let cart = localStorage.getItem(user.email);
@@ -37,13 +25,23 @@ export default function Home({isSignIn, setCartItems, setIsSignIn, signInWelcome
                 setCartItems(n => []);
             }
         }
-      },[])
+      },[setCartItems, setIsSignIn]);
 
     if (signInWelcome === "show" ){
         setTimeout(() => {
             setSignInWelcome("hidden");
         }, 5000);
     }
+
+    const secLinks = [
+        { "path": "/about-us", "text": "ABOUT US" },
+        { "path": "/services", "text": "SERVICES" },
+        { "path": "/reviews", "text": "REVIEWS" },
+        { "path": "/contact-us", "text": "CONTACT US" }
+    ];
+
+    const whyUs = [ "Timeliness", "Trustworthy", "Accuracy and Efficiency", "Reputable and Reliable", "Home Service", "Mobile Workshop" ];
+
     return (
     <>
         {signInWelcome === "show" && <PopUp addedPrompt={signInWelcome} text="Logged In Successfully !"  />}
@@ -74,16 +72,14 @@ export default function Home({isSignIn, setCartItems, setIsSignIn, signInWelcome
 
                     <div className='group relative w-auto m-1 mb-4 p-2 text-center overflow-hidden md:w-full md:m-0 md:p-0  '>
                         <div className='md:w-full'>
-                            <img src={car2} className='relative peer md:h-[30rem] md:w-full' />
+                            <img src={car2} alt="Home Car." className='relative peer md:h-[30rem] md:w-full' />
                         </div>
                         
                         <div className='absolute top-5 flex flex-wrap justify-center space-y-1 md:top-0'>
                             <h2 className=' font-bold text-slate-700'>Your one stop for all your car concerns.</h2>
                             <h2 className=' font-bold text-slate-500'>We Sell, We Rent, We Repair.</h2>
                             <div className='flex gap-5'>
-                                <p className='border-2 border-purple-950 px-2 text-purple-900 font-bold '>Sales</p>
-                                <p className='border-2 border-purple-950 px-2 text-purple-900 font-bold '>Rentals</p>
-                                <p className='border-2 border-purple-950 px-2 text-purple-900 font-bold '>Repairs</p>
+                                {["Sales", "Rentals", "Repairs"].map(services =>  <p key={services} className='border-2 border-purple-950 px-2 text-purple-900 font-bold '>{services}</p> ) }
                             </div>
                         </div>
                         <div className='group-hover:bg-red-700 absolute w-full bottom-7 left-0 mx-auto text-center md:w-full md:bottom-2 md:p-2  '>
@@ -111,38 +107,19 @@ export default function Home({isSignIn, setCartItems, setIsSignIn, signInWelcome
                     <div className='bg-slate-900 p-3  '>
                         <h2 className='text-gray-900 font-bold text-center'>Why Us </h2>
                         <div className='space-y-5 lg:flex lg:flex-wrap lg:justify-evenly lg:space-y-0 gap-1'>
-                            <div className='text-center bg-slate-600 lg:w-[30%] lg:h-40'>
-                                <div className='w-full h-40 bg-blue-400 lg:h-[80%]'></div>
-                                <p className='text-slate-300'>Timeliness</p>
-                            </div>
-                            <div className='text-center bg-slate-600 lg:w-[30%] lg:h-40'>
-                                <div className='w-full h-40 bg-blue-400 lg:h-[80%]'></div>
-                                <p className='text-slate-300'>Trustworthy</p>
-                            </div>
-                            <div className='text-center bg-slate-600 lg:w-[30%] lg:h-40'>
-                                <div className='w-full h-40 bg-blue-400 lg:h-[80%]'></div>
-                                <p className='text-slate-300'>Accuracy and Efficiency</p>
-                            </div>
-                            <div className='text-center bg-slate-600 lg:w-[30%] lg:h-40'>
-                                <div className='w-full h-40 bg-blue-400 lg:h-[80%]'></div>
-                                <p className='text-slate-300'>Reputable and Reliable</p>
-                            </div>
-                            <div className='text-center bg-slate-600 lg:w-[30%] lg:h-40'>
-                                <div className='w-full h-40 bg-blue-400 lg:h-[80%]'></div>
-                                <p className='text-slate-300'>Home Service</p>
-                            </div>
-                            <div className='text-center bg-slate-600 lg:w-[30%] lg:h-40'>
-                                <div className='w-full h-40 bg-blue-400 lg:h-[80%]'></div>
-                                <p className='text-slate-300'>Mobile Workshop</p>
-                            </div>
+                            { whyUs.map(reasons => {
+                                return (
+                                    <div key={reasons} className='text-center bg-slate-600 lg:w-[30%] lg:h-40'>
+                                        <div className='w-full h-40 bg-blue-400 lg:h-[80%]'></div>
+                                        <p className='text-slate-300'>{reasons}</p>
+                                    </div>
+                                );
+                            }) }
                         </div>
                     </div>
                 
                     <div className='m-1 w-auto h-42 text-center p-4 space-y-8 mb-4 md:text-2xl lg:absolute lg:right-0 lg:w-[30%]'>
-                        <h2><NavLink to="/about-us" className='block border-2 border-purple-800 px-24 py-2 font-bold text-violet-600 hover:text-white hover:bg-violet-900' >ABOUT US</NavLink></h2>
-                        <h2><NavLink to="/services" className='block border-2 border-purple-800 px-24 py-2 font-bold text-violet-600 hover:text-white hover:bg-violet-900' >SERVICES</NavLink></h2>
-                        <h2><NavLink to="/reviews" className='block border-2 border-purple-800 px-24 py-2 font-bold text-violet-600 hover:text-white hover:bg-violet-900' >REVIEWS</NavLink></h2>
-                        <h2><NavLink to="/contact-us" className='block border-2 border-purple-800 px-24 py-2 font-bold text-violet-600 hover:text-white hover:bg-violet-900' >CONTACT US</NavLink></h2>
+                        {secLinks.map((link =>  <h2 key={link.path}><NavLink to={link.path} className='block border-2 border-purple-800 px-24 py-2 font-bold text-violet-600 hover:text-white hover:bg-violet-900 lg:portrait:px-2' >{link.text}</NavLink></h2> ))}
                     </div>
                     </div>
 
@@ -161,38 +138,19 @@ export default function Home({isSignIn, setCartItems, setIsSignIn, signInWelcome
                 <div className='bg-slate-900 p-3 lg:w-[65%] lg:portrait:pt-5 '>
                     <h2 className='text-gray-900 font-bold text-center'>Why Us </h2>
                     <div className='space-y-5 lg:flex lg:flex-wrap lg:justify-evenly lg:space-y-0 gap-1'>
-                        <div className='text-center bg-slate-600 lg:w-[30%] lg:h-40'>
-                            <div className='w-full h-40 bg-blue-400 lg:h-[80%]'></div>
-                            <p className='text-slate-300'>Timeliness</p>
-                        </div>
-                        <div className='text-center bg-slate-600 lg:w-[30%] lg:h-40'>
-                            <div className='w-full h-40 bg-blue-400 lg:h-[80%]'></div>
-                            <p className='text-slate-300'>Trustworthy</p>
-                        </div>
-                        <div className='text-center bg-slate-600 lg:w-[30%] lg:h-40'>
-                            <div className='w-full h-40 bg-blue-400 lg:h-[80%]'></div>
-                            <p className='text-slate-300 text-sm'>Accuracy and Efficiency</p>
-                        </div>
-                        <div className='text-center bg-slate-600 lg:w-[30%] lg:h-40'>
-                            <div className='w-full h-40 bg-blue-400 lg:h-[80%]'></div>
-                            <p className='text-slate-300'>Reputable and Reliable</p>
-                        </div>
-                        <div className='text-center bg-slate-600 lg:w-[30%] lg:h-40'>
-                            <div className='w-full h-40 bg-blue-400 lg:h-[80%]'></div>
-                            <p className='text-slate-300'>Home Service</p>
-                        </div>
-                        <div className='text-center bg-slate-600 lg:w-[30%] lg:h-40'>
-                            <div className='w-full h-40 bg-blue-400 lg:h-[80%]'></div>
-                            <p className='text-slate-300'>Mobile Workshop</p>
-                        </div>
+                        { whyUs.map(reasons => {
+                            return (
+                                <div key={reasons} className='text-center bg-slate-600 lg:w-[30%] lg:h-40'>
+                                    <div className='w-full h-40 bg-blue-400 lg:h-[80%]'></div>
+                                    <p className='text-slate-300'>{reasons}</p>
+                                </div>
+                            );
+                        }) }
                     </div>
                 </div>
             
                 <div className='m-1 w-auto h-42 text-center p-4 space-y-8 mb-4 md:text-2xl lg:w-[33%] lg:space-y-14'>
-                    <h2><NavLink to="/about-us" className='block border-2 border-purple-800 px-24 py-2 font-bold text-violet-600 hover:text-white hover:bg-violet-900 lg:portrait:px-2' >ABOUT US</NavLink></h2>
-                    <h2><NavLink to="/services" className='block border-2 border-purple-800 px-24 py-2 font-bold text-violet-600 hover:text-white hover:bg-violet-900 lg:portrait:px-2' >SERVICES</NavLink></h2>
-                    <h2><NavLink to="/reviews" className='block border-2 border-purple-800 px-24 py-2 font-bold text-violet-600 hover:text-white hover:bg-violet-900 lg:portrait:px-2' >REVIEWS</NavLink></h2>
-                    <h2><NavLink to="/contact-us" className='block border-2 border-purple-800 px-24 py-2 font-bold text-violet-600 hover:text-white hover:bg-violet-900 lg:portrait:px-2' >CONTACT US</NavLink></h2>
+                    {secLinks.map((link =>  <h2 key={link.path}><NavLink to={link.path} className='block border-2 border-purple-800 px-24 py-2 font-bold text-violet-600 hover:text-white hover:bg-violet-900 lg:portrait:px-2' >{link.text}</NavLink></h2> ))}
                 </div>
             </div>
 
@@ -209,6 +167,6 @@ export default function Home({isSignIn, setCartItems, setIsSignIn, signInWelcome
             </div>
         </div>
     </>
-    )
+    );
 }
 

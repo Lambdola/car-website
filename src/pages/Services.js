@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { car_database, repairs_database } from '../components/Car_Database';
-import Header from '../components/Header'
-import Filter from '../components/Filter'
+import Filter from '../components/Filter';
 import car1 from '../images/car1.jpg';
-
-import LuggageIcon from '@mui/icons-material/Luggage'
-import NoLuggageIcon from '@mui/icons-material/NoLuggage'
-import WorkOutlineIcon from '@mui/icons-material/WorkOutline'
 import Search from '@mui/icons-material/Search';
-import RentalItem from '../components/RentalItem'
+import RentalItem from '../components/RentalItem';
 import SalesItem from '../components/SalesItem';
-import SalesItemInfo from '../components/SalesItemInfo'
+import SalesItemInfo from '../components/SalesItemInfo';
 import { purple } from '@mui/material/colors';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import BackToTop from '../components/BackToTop';
 
 
@@ -279,7 +274,6 @@ export default function Services({isSignIn, setIsSignIn, setCartItems, cartItems
 	const [stat, setStat] = useState("sales");
 	const [filter, setFilter] = useState({});
 	const [data, setData] = useState(car_database);
-	const [ repairsData, setRepairsData ] = useState(repairs_database);
 	const [change, setChange ] = useState("yes");
 	const [salesInfo, setSalesInfo] = useState(null);
 	const [repairService, setRepairService] = useState("");
@@ -291,7 +285,7 @@ export default function Services({isSignIn, setIsSignIn, setCartItems, cartItems
 		if(user.loggedIn === "true"){
 		  setIsSignIn(true);
 		}
-	  },[]);
+	  },[setIsSignIn]);
 
 
 	let url = window.location.href;
@@ -329,7 +323,6 @@ export default function Services({isSignIn, setIsSignIn, setCartItems, cartItems
 		
 		let inputName = e.target.name;
 		let inputValue = e.target.value;
-		let newData;
 		
 		setFilter({...filter, [inputName] : inputValue});
 	}
@@ -337,7 +330,6 @@ export default function Services({isSignIn, setIsSignIn, setCartItems, cartItems
 
 	function handleSubmit(e) {
 		e.preventDefault();
-		let filterKey = Object.keys(filter);
 		let newData = [...car_database];
 		let freshData = [];
 	
@@ -366,9 +358,9 @@ export default function Services({isSignIn, setIsSignIn, setCartItems, cartItems
 		
 		<div className='md:mt-8'>
 			<div className='flex justify-evenly font-bold text-lg md:text-xl md:h-14 p-2 text-white mt-5 mb-5'>
-				<p><a onClick={() => { setSalesInfo(n => setSalesInfo(null)); setStat("sales")}} className={`${sales} hover:bg-violet-900 p-2`}>Sales</a></p>
-				<p><a onClick={() => { setSalesInfo(n => setSalesInfo(null)); setStat("rentals")}} className={`${rentals} hover:bg-violet-900 p-2`}>Rentals</a></p>
-				<p><a onClick={() => { setRepairService(n => setRepairService("")); setStat("repairs")}} className={`${repairs} hover:bg-violet-900 p-2`}>Repairs</a></p>
+				<p><NavLink to="#" onClick={() => { setSalesInfo(n => setSalesInfo(null)); setStat("sales")}} className={`${sales} hover:bg-violet-900 p-2`}>Sales</NavLink></p>
+				<p><NavLink to="#" onClick={() => { setSalesInfo(n => setSalesInfo(null)); setStat("rentals")}} className={`${rentals} hover:bg-violet-900 p-2`}>Rentals</NavLink></p>
+				<p><NavLink to="#" onClick={() => { setRepairService(n => setRepairService("")); setStat("repairs")}} className={`${repairs} hover:bg-violet-900 p-2`}>Repairs</NavLink></p>
 			</div>
 			<div>
 				<Content 

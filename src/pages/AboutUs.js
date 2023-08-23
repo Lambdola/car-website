@@ -1,15 +1,15 @@
-import React , {useEffect} from 'react'
+import React , {useEffect} from 'react';
 
 
 function AboutUs({isSignIn, setIsSignIn}) {
   useEffect(()=> {
     window.scrollTo(0, 0);
     let user = localStorage.getItem("user");
-    user = JSON.parse(user)
+    user = JSON.parse(user);
     if(user.loggedIn === "true"){
       setIsSignIn(true);
     }
-  },[])
+  },[setIsSignIn]);
 
   return (
    <>
@@ -17,7 +17,7 @@ function AboutUs({isSignIn, setIsSignIn}) {
     <div className='border-2 border-black m-2'></div>
     
    </>
-  )
+  );
 }
 
-export default AboutUs
+export default AboutUs;

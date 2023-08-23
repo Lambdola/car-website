@@ -13,16 +13,10 @@ import NoRoute from './pages/NoRoute';
 import MakePayment from './pages/MakePayment';
 
 
-
-
-
 export default function App() {
-  let user = localStorage.getItem("user");
-  let cart = localStorage.getItem(user.email);
   const [isSignIn, setIsSignIn] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [count, setCount] = useState(0);
-  const [holdCount, setHoldCount] = useState(0)
   const [signInWelcome, setSignInWelcome] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
   const [rentalData, setRentalData] = useState({
@@ -35,7 +29,6 @@ export default function App() {
 
   let cartCount;
   useEffect(()=>{
-    // alert("App");
     let user = localStorage.getItem("user");
     if(user.loggedIn === "true"){
       setIsSignIn(n => true);

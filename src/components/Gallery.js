@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 
 function Gallery() {
 
@@ -24,7 +24,6 @@ function Gallery() {
     let gallery = document.getElementById("gallery");
     let index = GalleryData.indexOf(param);
     gallery.scrollLeft = index*336;
-
     setId(index);
   }
 
@@ -46,11 +45,11 @@ function Gallery() {
           <h2 className='text-white text-2xl mb-3'>WHAT WE CAN DO FOR YOU </h2>
           <div>
             <div id="gallery" onClick={handleClick} className='w-[21rem] h-56 mx-auto md:w-full md:p-2 md:h-80 '>
-              <img key={GalleryData[id].url} src={GalleryData[id].url} className='w-[21rem] h-full border-4 bg-purple-500 rounded-xl mx-auto md:w-full' />
+              <img key={GalleryData[id].url} src={GalleryData[id].url} alt={GalleryData[id].text} className='w-[21rem] h-full border-4 bg-purple-500 rounded-xl mx-auto md:w-full' />
             </div>
           </div>
           <div className='my-2'>
-            {GalleryData.map((item)=> <div key={GalleryData[id]} className={`mr-2 h-4 w-4 rounded-full inline-block border border-black ${GalleryData[id] === item ? "bg-purple-500" : "bg-white"}`} onClick={()=>handleGallerySlide(item)}></div> )}
+            {GalleryData.map((item)=> <div key={item.url} className={`mr-2 h-4 w-4 rounded-full inline-block border border-black ${GalleryData[id] === item ? "bg-purple-500" : "bg-white"}`} onClick={()=>handleGallerySlide(item)}></div> )}
           </div>
           <div className='flex justify-center align-middle -mt-2'>
             <p className='text-purple-700 text-lg font-semibold font-sans m-2 md:text-xl'>{GalleryData[id].text}</p>

@@ -13,7 +13,6 @@ function Cart({setIsSignIn, setCartItems, cartItems, count, setCount, cartCount,
    
     useEffect(()=>{
         window.scrollTo(0, 0);
-        // alert("Cart")
         let user = localStorage.getItem("user");
         user = JSON.parse(user);
         if(user.loggedIn === "true"){
@@ -33,7 +32,7 @@ function Cart({setIsSignIn, setCartItems, cartItems, count, setCount, cartCount,
                 setCartItems(n => []);
             }
         }
-    },[]);
+    },[setCartItems, setIsSignIn]);
 
     
     function showPrompt(param, items) {
@@ -66,7 +65,6 @@ function Cart({setIsSignIn, setCartItems, cartItems, count, setCount, cartCount,
                 }
             }
             setTotalPrice(copyTotalPrice);
-            // alert(copyTotalPrice)
         } else {
             setTotalPrice(0);
         }
@@ -103,8 +101,7 @@ function Cart({setIsSignIn, setCartItems, cartItems, count, setCount, cartCount,
                             <div className='md:p-2'>
                                 <CartInfo key={items.objectId} salesInfo={items} image={items.url} setCartItems={setCartItems} cartItems={cartItems} setCount={setCount} cartCount={cartCount} totalPrice={totalPrice} setTotalPrice={setTotalPrice} priceFormat={priceFormat} /> 
                             </div>
-                            
-                            )
+                            );
                     } else if (items.title) {
                         return (
                             <>
@@ -119,18 +116,17 @@ function Cart({setIsSignIn, setCartItems, cartItems, count, setCount, cartCount,
                                     <p className='p-1 bg-violet-400 rounded text-white font-bold font-mono '><span className='text-purple-900'>Phone:</span> {items.phone}</p>
                                     <p className='p-1 bg-violet-400 rounded text-white font-bold font-mono '><span className='text-purple-900'>E-mail:</span> {items.email}</p>
                                     <p className='p-1 bg-violet-400 rounded text-white font-bold font-mono '><span className='text-purple-900'>Location:</span> {items.location}</p>
-                                    {/* <p className='p-1 bg-violet-400 rounded text-white font-bold font-mono '><span className='text-purple-900'>Price:</span> {items.Price}</p> */}
                                     {items.address && <p className='p-1 bg-violet-400 rounded text-white font-bold font-mono '><span className='text-purple-900'>Address:</span> {items.address}</p>}
                                     {(items.Price && (items.location === "Home Service")) && <p className='p-1 bg-violet-400 rounded text-white font-bold font-mono '><span className='text-purple-900'>Price</span> {items.Price.home}</p> }
                                     {(items.Price && (items.location === "Workshop Service")) && <p className='p-1 bg-violet-400 rounded text-white font-bold font-mono '><span className='text-purple-900'>Price</span> {items.Price.workshop}</p> }
                                     <div className='text-center flex w-40 mx-auto justify-center'>
                                         <Remove showPrompt={showPrompt} items={items} />
                                     </div>
-                                   
                                 </div>
                             </>
-                        )
+                        );
                     }
+                    return 0;
                 } )
                  : 
                 <h2 className='text-black text-4xl font-bold text-center font-roboto'>No Items Yet</h2>
@@ -142,7 +138,7 @@ function Cart({setIsSignIn, setCartItems, cartItems, count, setCount, cartCount,
             
         </ul>
     </>
-    )
+    );
 }
 
 export default Cart;

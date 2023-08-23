@@ -4,7 +4,7 @@ import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import LockIcon from '@mui/icons-material/Lock';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import { purple, red, orange, green } from '@mui/material/colors';
+import { purple, orange, green } from '@mui/material/colors';
 import DebitCards from '../components/DebitCards';
 import { toMoneyString } from '../toMoneyString';
 import { useNavigate } from 'react-router-dom';
@@ -22,7 +22,6 @@ function MakePayment({setIsSignIn, setCartItems, totalPrice}) {
     })
     useEffect(()=>{
         window.scrollTo(0, 0);
-        // alert("Cart");
         let user = localStorage.getItem("user");
         user = JSON.parse(user);
         if(user.loggedIn === "true"){
@@ -37,30 +36,25 @@ function MakePayment({setIsSignIn, setCartItems, totalPrice}) {
                 setCartItems(n => []);
             }
         }
-    },[]);
+    },[setCartItems, setIsSignIn]);
     let navigate = useNavigate();
 
     function handlePlaceholder(){
         let exp = document.getElementById("exp");
-        // exp.addEventListener("focusin", ()=> {
             exp.setAttribute("placeholder", "MM/YY");
-        // })
     }
     function handlePaymentDetailsChange(e) {
         let name = e.target.name;
         let value = e.target.value;
-        // alert(JSON.stringify(e))
-        // let cardNoCount = 0;
         if ((name === "cardNumber")) {
             if (cardNoCount === 4) {
-                alert(cardNoCount)
                 value = value + "-";
                 setCardNoCount(0);
             }else {
                 setCardNoCount(cardNoCount+1);
             }
         }
-        setPaymentDetails({...paymentDetails, [name]: value})
+        setPaymentDetails({...paymentDetails, [name]: value});
     }
 
     function handleSubmit(e) {
@@ -176,7 +170,7 @@ function MakePayment({setIsSignIn, setCartItems, totalPrice}) {
     </>
     
     }</>
-  )
+  );
 }
 
-export default MakePayment
+export default MakePayment;
