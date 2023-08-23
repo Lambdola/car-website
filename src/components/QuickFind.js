@@ -10,7 +10,7 @@ import { purple } from '@mui/material/colors';
 export default function QuickFind() {
     return (
         <div className='w-full bg-gray-900 pt-4 pb-10 rounded-xl mx-auto text-center mb-4  '>
-            <p className='text-gray-200 font-roboto font-bold text-2xl mb-7 xl:text-4xl '>Quick Find</p>
+            <p className='text-gray-200 font-roboto font-bold text-2xl mb-7 xl:text-4sxl '>Quick Find</p>
             <div className='xl:flex'>
                 <div className='bg-green-500 rounded-t-3xl px-5 py-6 pb-32 -mb-20 text-left space-y-5 xl:w-1/3 '>
                     <div className='flex flex-wrap flex-col'>
