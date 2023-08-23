@@ -39,7 +39,8 @@ function Gallery() {
 
   return (
     <>
-      <div className='relative w-full border bg-slate-900 text-center py-3 h-[25rem] md:h-[30rem]'>
+      <div className='relative w-full border bg-slate-900 text-center py-3 h-[25rem] md:h-[30rem]
+      '>
         <div className='absolute bottom-0 bg-yellow-400 w-full h-44 '></div>
         <div className='relative'>
           <h2 className='text-white text-2xl mb-3'>WHAT WE CAN DO FOR YOU </h2>

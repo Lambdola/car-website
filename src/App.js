@@ -56,8 +56,8 @@ export default function App() {
     <div className='relative selection:bg-purple-500
     xsm:bg-lime-500
     sm:bg-red-500 
-    md:bg-fuchsia-50
-    lg:bg-yellow-500 
+    md:bg-fuchsia-500
+    lg:bg-yellow-50
     xl:bg-orange-600
     2xl:bg-blue-500
     '>
