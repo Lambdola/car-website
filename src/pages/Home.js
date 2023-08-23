@@ -11,8 +11,13 @@ import PopUp from '../components/PopUp';
 
 export default function Home({isSignIn, setCartItems, setIsSignIn, signInWelcome, setSignInWelcome}) {
     useEffect(()=> {
-        let user = localStorage.getItem("user");
-        user = JSON.parse(user);
+        let user;
+        try{
+            user = localStorage.getItem("user");
+          } catch(error) {
+            let data = {"loggedIn": "false" };
+            localStorage.setItem("user", JSON.stringify(data) );
+          }
         if(user.loggedIn === "true"){
             setIsSignIn(n => true);
             let cart = localStorage.getItem(user.email);

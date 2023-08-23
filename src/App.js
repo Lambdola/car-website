@@ -27,10 +27,16 @@ export default function App() {
   });
 
 
-  let cartCount;
+  let cartCount, user;
   useEffect(()=>{
-    let user = localStorage.getItem("user");
-    if(user.loggedIn === "true"){
+    try{
+      user = localStorage.getItem("user");
+    } catch(error) {
+      let data = {"loggedIn": "false" };
+      localStorage.setItem("user", JSON.stringify(data) );
+    }
+   
+    if (user.loggedIn === "true"){
       setIsSignIn(n => true);
       let cart = localStorage.getItem(user.email);
       try {

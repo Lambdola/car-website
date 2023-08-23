@@ -13,8 +13,13 @@ function Cart({setIsSignIn, setCartItems, cartItems, count, setCount, cartCount,
    
     useEffect(()=>{
         window.scrollTo(0, 0);
-        let user = localStorage.getItem("user");
-        user = JSON.parse(user);
+        let user;
+        try{
+            user = localStorage.getItem("user");
+          } catch(error) {
+            let data = {"loggedIn": "false" };
+            localStorage.setItem("user", JSON.stringify(data) );
+          }
         if(user.loggedIn === "true"){
             setIsSignIn(true);
             let cart = localStorage.getItem(user.email);

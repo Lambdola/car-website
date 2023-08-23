@@ -280,8 +280,13 @@ export default function Services({isSignIn, setIsSignIn, setCartItems, cartItems
 	
 	useEffect(()=> {
 		window.scrollTo(0, 0);
-		let user = localStorage.getItem("user");
-		user = JSON.parse(user);
+		let user;
+		try{
+			user = localStorage.getItem("user");
+		  } catch(error) {
+			let data = {"loggedIn": "false" };
+			localStorage.setItem("user", JSON.stringify(data) );
+		  }
 		if(user.loggedIn === "true"){
 		  setIsSignIn(true);
 		}
