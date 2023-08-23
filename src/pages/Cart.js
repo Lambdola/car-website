@@ -14,7 +14,16 @@ function Cart({ isSignIn ,setIsSignIn, setCartItems, cartItems, count, setCount,
     useEffect(()=>{
         window.scrollTo(0, 0);
 
-        if (isSignIn === true){
+        let user = localStorage.getItem("user");
+        let test;
+        try {
+        user = JSON.parse(user);
+        test = user.loggedIn;
+        } catch (error) {
+        user = { "loggedIn": "false" };
+        }
+    
+        if (user.loggedIn === "true"){
             setIsSignIn(true);
             let user = localStorage.getItem("user");
             let cart = localStorage.getItem(user.email);
@@ -32,7 +41,7 @@ function Cart({ isSignIn ,setIsSignIn, setCartItems, cartItems, count, setCount,
                 setCartItems(n => []);
             }
         }
-    },[setCartItems, setIsSignIn]);
+    },[]);
 
     
     function showPrompt(param, items) {

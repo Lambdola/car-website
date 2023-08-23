@@ -29,14 +29,16 @@ export default function App() {
 
   let cartCount, user;
   useEffect(()=>{
-    try{
-      user = localStorage.getItem("user");
-    } catch(error) {
-      let data = {"loggedIn": "false" };
-      localStorage.setItem("user", JSON.stringify(data) );
+    let user = localStorage.getItem("user");
+    let test;
+    try {
+      user = JSON.parse(user);
+      test = user.loggedIn;
+    } catch (error) {
+      user = { "loggedIn": "false" };
     }
    
-    if (isSignIn === true){
+    if (user.loggedIn === "true"){
       setIsSignIn(n => true);
       let cart = localStorage.getItem(user.email);
       try {
@@ -48,7 +50,7 @@ export default function App() {
           setCartItems(n => []);
       }
     }
-  },[isSignIn, cartItems, count]);
+  },[]);
   
 
   return (

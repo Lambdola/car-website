@@ -12,7 +12,15 @@ import PopUp from '../components/PopUp';
 export default function Home({isSignIn, setCartItems, setIsSignIn, signInWelcome, setSignInWelcome}) {
     useEffect(()=> {
         window.scrollTo(0, 0);
-        if (isSignIn === true){
+        let user = localStorage.getItem("user");
+        let test;
+        try {
+        user = JSON.parse(user);
+        test = user.loggedIn;
+        } catch (error) {
+        user = { "loggedIn": "false" };
+        }
+        if (user.loggedIn === "true"){
             setIsSignIn(n => true);
             let user = localStorage.getItem("user");
             let cart = localStorage.getItem(user.email);
@@ -25,7 +33,7 @@ export default function Home({isSignIn, setCartItems, setIsSignIn, signInWelcome
                 setCartItems(n => []);
             }
         }
-      },[setCartItems, setIsSignIn]);
+      },[]);
 
     if (signInWelcome === "show" ){
         setTimeout(() => {

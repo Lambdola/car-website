@@ -22,7 +22,16 @@ function MakePayment({ isSignIn ,setIsSignIn, setCartItems, totalPrice}) {
     })
     useEffect(()=>{
         window.scrollTo(0, 0);
-        if (isSignIn === true){
+        let user = localStorage.getItem("user");
+        let test;
+        try {
+        user = JSON.parse(user);
+        test = user.loggedIn;
+        } catch (error) {
+        user = { "loggedIn": "false" };
+        }
+    
+        if (user.loggedIn === "true"){
             setIsSignIn(n => true);
             let user = localStorage.getItem("user");
             let cart = localStorage.getItem(user.email);
@@ -35,7 +44,7 @@ function MakePayment({ isSignIn ,setIsSignIn, setCartItems, totalPrice}) {
                 setCartItems(n => []);
             }
         }
-    },[setCartItems, setIsSignIn]);
+    },[]);
     let navigate = useNavigate();
 
     function handlePlaceholder(){

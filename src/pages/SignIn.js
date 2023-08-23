@@ -101,11 +101,11 @@ function NotNewMember({handleLogInDisplay, handleLogInSubmit, setUserLogInDetail
         <form onSubmit={handleLogInSubmit} className='space-y-5'>
           <div>
             <p>E-MAIL</p>
-            <input name="emai" type="email" value={userLogInDetails.emai} onChange={handleLogIn} placeholder="E-MAIL" autoComplete="off" className='border border-slate-400 rounded py-1 px-3 w-full'/>
+            <input name="emai" required type="email" value={userLogInDetails.emai} onChange={handleLogIn} placeholder="E-MAIL" autoComplete="off" className='border border-slate-400 rounded py-1 px-3 w-full'/>
           </div>
           <div>
             <p>PASSWORD</p>
-            <input name="password" type="password" value={userLogInDetails.password} onChange={handleLogIn} placeholder="PASSWORD"  autoComplete="off" className='border border-slate-400 rounded py-1 px-3 w-full' />
+            <input name="password" required type="password" value={userLogInDetails.password} onChange={handleLogIn} placeholder="PASSWORD"  autoComplete="off" className='border border-slate-400 rounded py-1 px-3 w-full' />
           </div>
           <div className='text-center'>
             <button type="submit" className='text-white font-bold bg-purple-700 w-32 p-3 text-lg rounded-xl hover:bg-purple-900 active:bg-green-600'>Log In</button>
@@ -208,16 +208,32 @@ function SignIn({setIsSignIn, signInWelcome, setSignInWelcome}) {
     e.preventDefault();
     let user = localStorage.getItem("user");
     user = JSON.parse(user);
-    let updateDetails;
-    if ((userLogInDetails.emai === user.email) && (hash(userLogInDetails.password) === user.password)) {
-      updateDetails = {...user, "loggedIn": "true"};
-      localStorage.setItem("user", JSON.stringify(updateDetails));
-      setHasAccount(n => setHasAccount("yes"));
-      setIsSignIn(true);
-      setSignInWelcome("show");
-    } else {
-      setHasAccount("no");
+    let test;
+    try {
+      test = user.email;
+        let updateDetails;
+      if ((userLogInDetails.emai === user.email) && (hash(userLogInDetails.password) === user.password)) {
+        updateDetails = {...user, "loggedIn": "true"};
+        localStorage.setItem("user", JSON.stringify(updateDetails));
+        setHasAccount(n => setHasAccount("yes"));
+        setIsSignIn(true);
+        setSignInWelcome("show");
+      } else {
+        setHasAccount("no");
+      }
+    } catch (error) {
+      setHasAccount("no")
     }
+    // let updateDetails;
+    // if ((userLogInDetails.emai === user.email) && (hash(userLogInDetails.password) === user.password)) {
+    //   updateDetails = {...user, "loggedIn": "true"};
+    //   localStorage.setItem("user", JSON.stringify(updateDetails));
+    //   setHasAccount(n => setHasAccount("yes"));
+    //   setIsSignIn(true);
+    //   setSignInWelcome("show");
+    // } else {
+    //   setHasAccount("no");
+    // }
   }
 
   return (

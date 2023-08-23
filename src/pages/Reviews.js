@@ -4,10 +4,19 @@ import BackToTop from '../components/BackToTop';
 
 function Reviews({isSignIn, setIsSignIn}) {
     useEffect(()=> {
-      if (isSignIn === true){
+        let user = localStorage.getItem("user");
+        let test;
+        try {
+        user = JSON.parse(user);
+        test = user.loggedIn;
+        } catch (error) {
+        user = { "loggedIn": "false" };
+        }
+    
+        if (user.loggedIn === "true"){
           setIsSignIn(true);
         }
-    },[setIsSignIn]);
+    },[]);
 
     const reviews = [
         { "name": "John Doe", "title": "A Single Dad and a Ford User", "comment": "The href attribute is required for an anchor to be keyboard accessible. Provide a valid, navigable address as the href value. If you cannot provide an href, but still need the element to resemble a link, use a button and change it with appropriate styles." },

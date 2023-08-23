@@ -4,10 +4,19 @@ import BackToTop from '../components/BackToTop';
 function Blog({ isSignIn ,setIsSignIn}) {
     useEffect(()=> {
         window.scrollTo(0, 0);
-        if (isSignIn === true){
+        let user = localStorage.getItem("user");
+        let test;
+        try {
+          user = JSON.parse(user);
+          test = user.loggedIn;
+        } catch (error) {
+          user = { "loggedIn": "false" };
+        }
+       
+        if (user.loggedIn === "true"){
           setIsSignIn(true);
         }
-      },[setIsSignIn]);
+      },[]);
 
     return (
     <>
