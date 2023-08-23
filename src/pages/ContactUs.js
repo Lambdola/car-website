@@ -4,14 +4,7 @@ import BackToTop from '../components/BackToTop';
 function ContactUs({isSignIn, setIsSignIn, cartItems}) {
   useEffect(()=> {
     window.scrollTo(0, 0);
-    let user;
-    try{
-      user = localStorage.getItem("user");
-    } catch(error) {
-      let data = {"loggedIn": "false" };
-      localStorage.setItem("user", JSON.stringify(data) );
-    }
-    if(user.loggedIn === "true"){
+    if (isSignIn === true){
       setIsSignIn(true);
     }
   },[setIsSignIn]);

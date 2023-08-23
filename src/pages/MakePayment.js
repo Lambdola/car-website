@@ -9,7 +9,7 @@ import DebitCards from '../components/DebitCards';
 import { toMoneyString } from '../toMoneyString';
 import { useNavigate } from 'react-router-dom';
 
-function MakePayment({setIsSignIn, setCartItems, totalPrice}) {
+function MakePayment({ isSignIn ,setIsSignIn, setCartItems, totalPrice}) {
     const [paymentState, setPaymentState] = useState("info");
     const [cardNoCount, setCardNoCount] = useState(0);
     const [success, setSuccess] = useState("no");
@@ -22,15 +22,9 @@ function MakePayment({setIsSignIn, setCartItems, totalPrice}) {
     })
     useEffect(()=>{
         window.scrollTo(0, 0);
-        let user;
-        try{
-            user = localStorage.getItem("user");
-          } catch(error) {
-            let data = {"loggedIn": "false" };
-            localStorage.setItem("user", JSON.stringify(data) );
-          }
-        if(user.loggedIn === "true"){
+        if (isSignIn === true){
             setIsSignIn(n => true);
+            let user = localStorage.getItem("user");
             let cart = localStorage.getItem(user.email);
             try {
                 cart = JSON.parse(cart);

@@ -6,22 +6,17 @@ import BackToTop from '../components/BackToTop';
 import { useNavigate } from 'react-router-dom';
 import { toMoneyString } from '../toMoneyString';
 
-function Cart({setIsSignIn, setCartItems, cartItems, count, setCount, cartCount,totalPrice, setTotalPrice}) {
+function Cart({ isSignIn ,setIsSignIn, setCartItems, cartItems, count, setCount, cartCount,totalPrice, setTotalPrice}) {
     const [ removePrompt, setRemovePrompt ] = useState("hide");
     const [repairItem, setRepairItem]= useState({});
     let navigate = useNavigate();
    
     useEffect(()=>{
         window.scrollTo(0, 0);
-        let user;
-        try{
-            user = localStorage.getItem("user");
-          } catch(error) {
-            let data = {"loggedIn": "false" };
-            localStorage.setItem("user", JSON.stringify(data) );
-          }
-        if(user.loggedIn === "true"){
+
+        if (isSignIn === true){
             setIsSignIn(true);
+            let user = localStorage.getItem("user");
             let cart = localStorage.getItem(user.email);
             try {
                 cart = JSON.parse(cart);

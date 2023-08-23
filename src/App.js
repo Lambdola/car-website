@@ -36,7 +36,7 @@ export default function App() {
       localStorage.setItem("user", JSON.stringify(data) );
     }
    
-    if (user.loggedIn === "true"){
+    if (isSignIn === true){
       setIsSignIn(n => true);
       let cart = localStorage.getItem(user.email);
       try {
@@ -73,7 +73,7 @@ export default function App() {
         <Route path="/about-us" element={<AboutUs isSignIn={isSignIn} setIsSignIn={setIsSignIn} />} />
         <Route path="/contact-us" element={<ContactUs isSignIn={isSignIn} setIsSignIn={setIsSignIn} cartItems={cartItems} />} />
         <Route path="/cart" element={<Cart isSignIn={isSignIn} setIsSignIn={setIsSignIn} setCartItems={setCartItems} cartItems={cartItems} count={count} setCount={setCount} cartCount={cartCount} totalPrice={totalPrice} setTotalPrice={setTotalPrice} />} />
-        <Route path="/make-payment" element={<MakePayment setIsSignIn={setIsSignIn} setCartItems={setCartItems} totalPrice={totalPrice} />} />
+        <Route path="/make-payment" element={<MakePayment isSignIn={isSignIn} setIsSignIn={setIsSignIn} setCartItems={setCartItems} totalPrice={totalPrice} />} />
         <Route path="*" element={<NoRoute />} />
       </Routes>
     </div>

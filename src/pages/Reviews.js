@@ -4,15 +4,7 @@ import BackToTop from '../components/BackToTop';
 
 function Reviews({isSignIn, setIsSignIn}) {
     useEffect(()=> {
-        let user;
-        try{
-            user = localStorage.getItem("user");
-          } catch(error) {
-            let data = {"loggedIn": "false" };
-            localStorage.setItem("user", JSON.stringify(data) );
-          }
-        user = JSON.parse(user);
-        if(user.loggedIn === "true"){
+      if (isSignIn === true){
           setIsSignIn(true);
         }
     },[setIsSignIn]);
