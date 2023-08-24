@@ -30,7 +30,7 @@ export default function AppChild({isSignIn, setIsSignIn}) {
   
   let user;
   useEffect(()=>{
-    alert("AppChild")
+    // alert("AppChild")
     user = localStorage.getItem("user");
     let test;
     try {

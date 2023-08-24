@@ -22,12 +22,21 @@ code {
     monospace;
 }
 
-#staff{
-  background-image: url(./images/cat.jpg);
-  background-repeat: no-repeat;
-  background-attachment:scroll;
-  background-position: center;
-  background-size:cover;
+.page-transition{
+  animation: load 1s ease-in;
+  /* transition: all 2s ease-in ; */
+}
+@keyframes load {
+  0% {
+    position: relative;
+    left:30%;
+    opacity: 0;
+  }
+  100%{
+    position: relative;
+    left:0%;
+    opacity: 1;
+  }
 }
 
   .no-scrollbar::-webkit-scrollbar {

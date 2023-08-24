@@ -19,7 +19,7 @@ function Blog({ isSignIn ,setIsSignIn}) {
       },[]);
 
     return (
-    <>
+    <div className='page-transition'>
         <BackToTop />
         <h1 className='font-bold text-xl text-center'>BLOG POSTS</h1>
         <div className='border-2 border-black m-2'></div>
@@ -40,7 +40,7 @@ function Blog({ isSignIn ,setIsSignIn}) {
                 <p className='float-right'>- Written By John Doe</p>
             </div>
         </div>
-    </>
+    </div>
     );
     }
 

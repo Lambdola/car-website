@@ -357,7 +357,7 @@ export default function Services({isSignIn, setIsSignIn, setCartItems, cartItems
 		
 	}
 	return (
-	<div className=''>
+	<div className='page-transition'>
 		<div className='md:relative md:top-3'>
 			<h1 className='text-center text-xl font-bold md:text-3xl'>SERVICES</h1>
 			<div className='border-2 border-black m-2' ></div>

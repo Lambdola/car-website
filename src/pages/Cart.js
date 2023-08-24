@@ -95,7 +95,7 @@ function Cart({ isSignIn ,setIsSignIn, setCartItems, cartItems, count, setCount,
 
     let copyCart = cartItems.filter((items) => (items.Count > 0 || items.tag === "Repairs"));
     return (
-    <>
+    <div className='page-transition'>
         { removePrompt === "show" && <RemovePrompt setRemovePrompt={setRemovePrompt} cartItems={cartItems} setCartItems={setCartItems} repairItem={repairItem} setRepairItem={setRepairItem} tag="Repairs" /> }
         <BackToTop />
         <div className='md:relative md:top-3'>
@@ -147,7 +147,7 @@ function Cart({ isSignIn ,setIsSignIn, setCartItems, cartItems, count, setCount,
             </div>
             
         </ul>
-    </>
+    </div>
     );
 }
 

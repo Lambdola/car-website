@@ -15,7 +15,7 @@ export default function Header({isSignIn, setIsSignIn, cartItems, cartCount, set
 
     let user;
     useEffect(()=>{
-        alert("Header")
+        // alert("Header")
         user = localStorage.getItem("user");
         let test;
         try {
@@ -26,7 +26,7 @@ export default function Header({isSignIn, setIsSignIn, cartItems, cartCount, set
         }
        
         if (user.loggedIn === "true"){
-            alert("yh")
+            // alert("yh")
             setLogIn(true);
     
         }else{

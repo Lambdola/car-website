@@ -26,7 +26,7 @@ function Reviews({isSignIn, setIsSignIn}) {
         { "name": "John Did", "title": "A Single Dad and a Ford User", "comment": "The href attribute is required for an anchor to be keyboard accessible. Provide a valid, navigable address as the href value. If you cannot provide an href, but still need the element to resemble a link, use a button and change it with appropriate styles." },
     ]
   return (
-    <>
+    <div className='page-transition'>
         <BackToTop />
         <h1 className='font-bold text-xl text-center'>REVIEWS</h1>
         <div className='border-2 border-black m-2'></div>
@@ -46,7 +46,7 @@ function Reviews({isSignIn, setIsSignIn}) {
                 );
             })}
         </div>
-    </>
+    </div>
   )
 }
 

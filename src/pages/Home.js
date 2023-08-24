@@ -12,7 +12,7 @@ import CartContent from '../components/CartContent';
 
 export default function Home({isSignIn, setCartItems, setIsSignIn, signInWelcome, cartCount, setSignInWelcome}) {
     useEffect(()=> {
-        alert("Home")
+        // alert("Home")
         window.scrollTo(0, 0);
         let user = localStorage.getItem("user");
         let test;
@@ -53,7 +53,7 @@ export default function Home({isSignIn, setCartItems, setIsSignIn, signInWelcome
     const whyUs = [ "Timeliness", "Trustworthy", "Accuracy and Efficiency", "Reputable and Reliable", "Home Service", "Mobile Workshop" ];
 
     return (
-    <>
+    <div className='page-transition'>
         {signInWelcome === "show" && <PopUp addedPrompt={signInWelcome} text="Logged In Successfully !"  />}
         {/* {cartCount > 0 && <CartContent cartCount={cartCount} />} */}
         <div className="bg-white md:h-full md:overflow-scroll no-scrollbar ">
@@ -69,10 +69,10 @@ export default function Home({isSignIn, setCartItems, setIsSignIn, signInWelcome
                     <div className='bg-purple-700 w-80 py-4 text-white font-semibold space-y-4 mx-auto rounded-xl text-center shadow md:w-full
                     lg:portrait:h-[30%] lg:portrait:flex lg:portrait:flex-col lg:portrait:gap-4 lg:portrait:text-2xl
                     xl:landscape:w-1/3 xl:landscape:text-3xl xl:rounded-none xl:relative
-                     '>
+                    '>
                         <h2 className='text-lg mb-5 font-bold text-slate-900 lg:portrait:mb-0 lg:portrait:mt-10 lg:portrait:text-2xl xl:landscape:text-3xl xl:landscape:my-10 '>BUSINESS HOURS</h2>
                         <div>
-                            <p className='underline'>MON - FRI</p>
+                            <p className='underline'>MvON - FRI</p>
                             <p>8:00 AM - 6:00 PM</p>
                         </div>
                         <div>
@@ -186,7 +186,7 @@ export default function Home({isSignIn, setCartItems, setIsSignIn, signInWelcome
                 </div> 
             </div>
         </div>
-    </>
+    </div>
     );
 }
 

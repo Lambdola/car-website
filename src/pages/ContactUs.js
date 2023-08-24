@@ -19,7 +19,7 @@ function ContactUs({isSignIn, setIsSignIn, cartItems}) {
   },[]);
 
   return (
-    <>
+    <div className='page-transition'>
         <BackToTop />
         <h1 className='font-bold text-xl text-center'>CONTACT US</h1>
         <div className='border-2 border-black m-2'></div>
@@ -27,7 +27,7 @@ function ContactUs({isSignIn, setIsSignIn, cartItems}) {
           <p>{JSON.stringify(cartItems)}</p>
         </div>
         
-    </>
+    </div>
   );
 }
 
