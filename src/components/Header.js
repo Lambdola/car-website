@@ -4,85 +4,100 @@ import CloseIcon from '@mui/icons-material/Close';
 import logo from '../images/car_logo2.png';
 import profilePic from '../images/car_logo.jpg';
 import CartContent from './CartContent';
-import BackToTop from './BackToTop';
-import { useEffect } from 'react';
-// import hh from '@mui/icons-material/ArrowUpward'
+import { useEffect, useState } from 'react';
 import { ArrowDropUp } from '@mui/icons-material';
+import SignIn from '../pages/SignIn';
 
-export default function Header({isSignIn, setIsSignIn, cartItems}) {
+export default function Header({isSignIn, setIsSignIn, cartItems, cartCount, setCartCount}) {
+    const [logIn, setLogIn] = useState(false);
 
     let navigate = useNavigate();
 
-    // alert(cartItems.length)
-    useEffect(()=> {
-        // window.scrollTo(0,0);
-    }, [cartItems])
-
-    let user = localStorage.getItem("user");
-    user = JSON.parse(user);
-    let cartCount = cartItems.length;
+    let user;
+    useEffect(()=>{
+        alert("Header")
+        user = localStorage.getItem("user");
+        let test;
+        try {
+          user = JSON.parse(user);
+          test = user.loggedIn;
+        } catch (error) {
+          user = { "loggedIn": "false" };
+        }
+       
+        if (user.loggedIn === "true"){
+            alert("yh")
+            setLogIn(true);
+    
+        }else{
+            setLogIn(false);
+        }
+      },[isSignIn]);
+    
 
     let url = window.location.href;
     let style = "bg-purple-600 text-purple hover:bg-purple-900 text-white";
-    let active = "border-4 border-purple-400 bg-white text-purple-500 hover:bg-purple-500 hover:border-purple-900 md:border-none" 
+    let active = "border-4 border-purple-400 bg-white text-purple-500 hover:bg-purple-500 hover:border-purple-900 md:border-none";
 
     let cart, services, reviews, blog, contactUs;
     if (url.includes("cart")) {
-        cart = active
+        cart = active;
     } else {
-        cart = style
+        cart = style;
     }
     if (url.includes("services")) {
-        services = active
+        services = active;
     } else {
-        services = style
+        services = style;
     }
     if (url.includes("blog")) {
-        blog = active
+        blog = active;
     } else {
-        blog = style
+        blog = style;
     }
     if (url.includes("reviews")) {
-        reviews = active
+        reviews = active;
     } else {
-        reviews = style
+        reviews = style;
     }
     if (url.includes("contact-us")) {
-        contactUs = active
+        contactUs = active;
     } else {
-        contactUs = style
+        contactUs = style;
     }
     
 
     function handleMenuClick(show) {
         let sideBar = document.getElementById("sideBar");
         if (show === "open") {
-            sideBar.style.display = "block"
+            sideBar.style.display = "block";
         }
         else if (show === "close") {
-            sideBar.style.display = "none"
+            sideBar.style.display = "none";
         }
     }
 
     function handleLogOut() {
-        let updateDetails = {...user, "loggedIn": "false"}
-        localStorage.setItem("user", JSON.stringify(updateDetails))
-        setIsSignIn(n => setIsSignIn(false))
-        setTimeout(()=>navigate("/"),1000)
+        let user = localStorage.getItem("user");
+        user = JSON.parse(user);
+        let updateDetails = {...user, "loggedIn": "false"};
+        localStorage.setItem("user", JSON.stringify(updateDetails));
+        setIsSignIn(false);
+        // setCartCount(0);
+        setTimeout(()=>navigate("/"),1000);
     }
 
 
     return (
         <header className="relative top-0 w-auto p-2 bg-gray-900 m-1 flex align-middle mb-3 md:w-full md:h-[7.5rem] md:z-10 ">
-            {/* <p className='text-red-600'>Count: {cartCount}</p> */}
-            {cartCount > 0 && <CartContent  cartCount={cartCount} />}
+            { logIn && (cartCount > 0 && <CartContent  cartCount={cartCount}/>)  } 
             {/* <BackToTop /> */}
             <div className="inline-block py-2 md:flex md:absolute md:w-full md:z-30 ">
                 <NavLink to="/" ><img className="h-16 w-16" src={logo} alt="Logo." /></NavLink>
             </div>
             <div className='absolute right-4 top-8 '>
                 {/* handles hamburger icon toggle and its contents; when logged in or not */}
-                { isSignIn ? 
+                { logIn ? 
                    (<ul className='relative bg-red-300 hidden '>
                         <li className='mt-16 flex flex-wrap justify-center xsm:lg:inline-block xsm:lg:mt-0 xsm:md:absolute xsm:md:right-0 xsm:md:-top-4 '>
                             <div className='w-20 h-20 rounded-full bg-gray-700 border-4 border-purple-800 overflow-hidden xsm:md:hover:border-white'>
@@ -124,7 +139,7 @@ export default function Header({isSignIn, setIsSignIn, cartItems}) {
                     <CloseIcon sx={{color:'black' , "&:hover": {color: "black"}}}  onClick={() => handleMenuClick("close")} />
                 </div>
                 
-                { isSignIn ?
+                { logIn ?
                     (<ul className='md:flex md:justify-around md:mt-14 md:w-full' >
 
                         <li className='mt-16 flex flex-wrap justify-center md:absolute md:right-1 md:px-2 md:-mt-14 md:flex-row text-center'>

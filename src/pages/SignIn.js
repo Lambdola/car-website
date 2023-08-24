@@ -73,7 +73,7 @@ function NewMember({handleLogInDisplay, handleSubmit,details, handleDetailsChang
 }
 
 
-function NotNewMember({handleLogInDisplay, handleLogInSubmit, setUserLogInDetails,userLogInDetails, hasAccount, setHasAccount}) {
+function NotNewMember({handleLogInDisplay, handleLogInSubmit, setUserLogInDetails,userLogInDetails, hasAccount, setHasAccount, setIsSignIn}) {
   const navigate = useNavigate();
   let show = "hidden";
 
@@ -83,6 +83,7 @@ function NotNewMember({handleLogInDisplay, handleLogInSubmit, setUserLogInDetail
 
 
   if (hasAccount === "yes") {
+    // setIsSignIn(n => setIsSignIn(true));
     setTimeout(() => navigate("/"),1000);
   }else if (hasAccount === "no"){
     show = "visible";
@@ -259,6 +260,7 @@ function SignIn({setIsSignIn, signInWelcome, setSignInWelcome}) {
             hasAccount={hasAccount}
             setHasAccount={setHasAccount} 
             setSignInWelcome={setSignInWelcome}
+            setIsSignIn={setIsSignIn}
           />
         }
       </div>

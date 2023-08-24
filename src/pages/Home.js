@@ -7,10 +7,12 @@ import Gallery from '../components/Gallery';
 import BackToTop from '../components/BackToTop';
 import car2 from '../images/car2.jpg';
 import PopUp from '../components/PopUp';
+import CartContent from '../components/CartContent';
 
 
-export default function Home({isSignIn, setCartItems, setIsSignIn, signInWelcome, setSignInWelcome}) {
+export default function Home({isSignIn, setCartItems, setIsSignIn, signInWelcome, cartCount, setSignInWelcome}) {
     useEffect(()=> {
+        alert("Home")
         window.scrollTo(0, 0);
         let user = localStorage.getItem("user");
         let test;
@@ -53,6 +55,7 @@ export default function Home({isSignIn, setCartItems, setIsSignIn, signInWelcome
     return (
     <>
         {signInWelcome === "show" && <PopUp addedPrompt={signInWelcome} text="Logged In Successfully !"  />}
+        {/* {cartCount > 0 && <CartContent cartCount={cartCount} />} */}
         <div className="bg-white md:h-full md:overflow-scroll no-scrollbar ">
             <BackToTop />
             <div className='overflow-hidden relative mx-auto lg:p-2 lg:portrait:w-[80%] bg-red-4 xl:portrait:w-full '>

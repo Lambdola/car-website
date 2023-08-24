@@ -12,11 +12,11 @@ import { useEffect, useState } from 'react';
 import NoRoute from './pages/NoRoute';
 import MakePayment from './pages/MakePayment';
 
-
-export default function App() {
-  const [isSignIn, setIsSignIn] = useState(false);
+export default function AppChild({isSignIn, setIsSignIn}) {
+  // const [isSignIn, setIsSignIn] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [count, setCount] = useState(0);
+  const [cartCount, setCartCount] = useState(null)
   const [signInWelcome, setSignInWelcome] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
   const [rentalData, setRentalData] = useState({
@@ -28,8 +28,9 @@ export default function App() {
 
 
   
-  let cartCount, user;
+  let user;
   useEffect(()=>{
+    alert("AppChild")
     user = localStorage.getItem("user");
     let test;
     try {
@@ -37,6 +38,7 @@ export default function App() {
       test = user.loggedIn;
     } catch (error) {
       user = { "loggedIn": "false" };
+      setIsSignIn(false);
     }
    
     if (user.loggedIn === "true"){
@@ -50,8 +52,14 @@ export default function App() {
       } catch (error) {
           setCartItems(n => setCartItems([]));
       }
+      setCartCount(cart.length);
     }
-  },[]);
+    else{
+      setCartCount(0);
+    }
+  },[isSignIn]);
+
+  
   
  
 
@@ -66,9 +74,9 @@ export default function App() {
 
     '>
       <div className=' md:w-full md:z-10'>
-         <Header isSignIn={isSignIn} setIsSignIn={setIsSignIn} cartItems={cartItems} cartCount={cartCount} />
+         <Header isSignIn={isSignIn} setIsSignIn={setIsSignIn} cartItems={cartItems} cartCount={cartCount} setCartCount={setCartCount} />
       </div>
-     
+    
       <Routes>
         <Route path="/" element={<Home isSignIn={isSignIn} setIsSignIn={setIsSignIn} signInWelcome={signInWelcome} setSignInWelcome={setSignInWelcome} cartCount={cartCount} setCartItems={setCartItems} />} />
         <Route path="/services" element={<Services isSignIn={isSignIn} setIsSignIn={setIsSignIn} setCartItems={setCartItems} cartItems={cartItems} setCount={setCount} rentalData={rentalData} setRentalData={setRentalData} />} />
