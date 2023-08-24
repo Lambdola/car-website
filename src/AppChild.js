@@ -49,10 +49,10 @@ export default function AppChild({isSignIn, setIsSignIn}) {
           if (cart.length > 0){
               setCartItems(n => setCartItems(cart));
           }
+          setCartCount(cart.length);
       } catch (error) {
           setCartItems(n => setCartItems([]));
       }
-      setCartCount(cart.length);
     }
     else{
       setCartCount(0);

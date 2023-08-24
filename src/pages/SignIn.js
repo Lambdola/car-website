@@ -208,9 +208,10 @@ function SignIn({setIsSignIn, signInWelcome, setSignInWelcome}) {
   function handleLogInSubmit(e) {
     e.preventDefault();
     let user = localStorage.getItem("user");
-    user = JSON.parse(user);
+    // user = JSON.parse(user);
     let test;
     try {
+      user = JSON.parse(user);
       test = user.email;
         let updateDetails;
       if ((userLogInDetails.emai === user.email) && (hash(userLogInDetails.password) === user.password)) {
