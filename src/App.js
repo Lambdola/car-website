@@ -27,9 +27,10 @@ export default function App() {
   });
 
 
+  
   let cartCount, user;
   useEffect(()=>{
-    let user = localStorage.getItem("user");
+    user = localStorage.getItem("user");
     let test;
     try {
       user = JSON.parse(user);
@@ -39,28 +40,29 @@ export default function App() {
     }
    
     if (user.loggedIn === "true"){
-      setIsSignIn(n => true);
+      setIsSignIn(n => setIsSignIn(true));
       let cart = localStorage.getItem(user.email);
       try {
           cart = JSON.parse(cart);
           if (cart.length > 0){
-              setCartItems(n => cart);
+              setCartItems(n => setCartItems(cart));
           }
       } catch (error) {
-          setCartItems(n => []);
+          setCartItems(n => setCartItems([]));
       }
     }
   },[]);
   
-  // xsm:bg-lime-500
-  // sm:bg-red-500 
-  // md:bg-fuchsia-500
-  // lg:bg-yellow-500
-  // xl:bg-orange-600
-  // 2xl:bg-blue-500 
+ 
 
   return (
     <div className='relative selection:bg-violet-400
+    xsm:bg-lime-500
+    sm:bg-red-500 
+    md:bg-fuchsia-500
+    lg:bg-yellow-500
+    xl:bg-orange-600
+    2xl:bg-blue-500 
 
     '>
       <div className=' md:w-full md:z-10'>

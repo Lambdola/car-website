@@ -33,7 +33,7 @@ function Filter({newFilter, filter, handleFilterChange, handleSubmit}) {
             <p className='peer-focus/price:block hidden absolute -top-2 text-[0.7rem] bg-white ml-2 px-1 font-bold text-center  md:text-lg md:-top-4'>Price</p><br />
           </div>
             
-            <button type="submit" className='font-bold text-xl bg-purple-800 text-slate-200 p-2 w-full text-center'>FILTER</button>
+            <button type="submit" className='font-bold text-xl bg-purple-800 text-slate-200 hover:bg-purple-700 active:bg-green-600 p-2 w-full text-center'>FILTER</button>
         </form>
     </div>
   )

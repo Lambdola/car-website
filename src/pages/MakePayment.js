@@ -25,23 +25,23 @@ function MakePayment({ isSignIn ,setIsSignIn, setCartItems, totalPrice}) {
         let user = localStorage.getItem("user");
         let test;
         try {
-        user = JSON.parse(user);
-        test = user.loggedIn;
+            user = JSON.parse(user);
+            test = user.loggedIn;
         } catch (error) {
-        user = { "loggedIn": "false" };
+            user = { "loggedIn": "false" };
         }
     
         if (user.loggedIn === "true"){
             setIsSignIn(n => true);
-            let user = localStorage.getItem("user");
+            // let user = localStorage.getItem("user");
             let cart = localStorage.getItem(user.email);
             try {
                 cart = JSON.parse(cart);
                 if (cart.length > 0){
-                    setCartItems(n => cart);
+                    setCartItems(n => setCartItems(cart));
                 }
             } catch (error) {
-                setCartItems(n => []);
+                setCartItems(n => setCartItems([]));
             }
         }
     },[]);

@@ -21,16 +21,16 @@ export default function Home({isSignIn, setCartItems, setIsSignIn, signInWelcome
         user = { "loggedIn": "false" };
         }
         if (user.loggedIn === "true"){
-            setIsSignIn(n => true);
-            let user = localStorage.getItem("user");
+            setIsSignIn(n => setIsSignIn(true));
+            // let user = localStorage.getItem("user");
             let cart = localStorage.getItem(user.email);
             try {
                 cart = JSON.parse(cart);
                 if (cart.length > 0){
-                    setCartItems(n => cart);
+                    setCartItems(n => setCartItems(cart));
                 }
             } catch (error) {
-                setCartItems(n => []);
+                setCartItems(n => setCartItems([]));
             }
         }
       },[]);
@@ -57,7 +57,8 @@ export default function Home({isSignIn, setCartItems, setIsSignIn, signInWelcome
             <BackToTop />
             <div className='overflow-hidden relative mx-auto lg:p-2 lg:portrait:w-[80%] bg-red-4 xl:portrait:w-full '>
                 {/* Side-Bar */}
-                <div className='relative no-scrollbar md:landscape:w-1/3 md:landscape:mx-auto md:portrait:float-left md:portrait:w-[39%] md:h-3/4 md:overflow-scroll md:no-scrollbar md:portrait:fixed md:top-36 md:space-y-3 md:m-1
+                <div className='relative no-scrollbar md:landscape:w-2/3 md:landscape:mx-auto md:portrait:float-left md:portrait:w-[39%] md:h-3/4 md:overflow-scroll md:no-scrollbar md:portrait:fixed md:portrait:top-36 md:space-y-3 md:m-1
+                md:landscape:mt-0
                 lg:portrait:w-[40%] lg:-top-3 lg:portrait:h-[98rem] lg:portrait:relative lg:portrait:space-y-20 lg:portrait:bg-fuchsia-200
                 lg:landscape:w-1/3 lg:landscape:float-left lg:landscape:h-auto
                 xl:landscape:flex xl:landscape:float-none xl:landscape:w-full xl:landscape:space-y-0 xl:landscape:mb-20
@@ -140,7 +141,7 @@ export default function Home({isSignIn, setCartItems, setIsSignIn, signInWelcome
                     </div>
 
                     <div className='lg:hidden'>
-                       <div className='bg-gradient-to-tr from-black to-red-500 text-center p-2 mb-5 w-full md:mb-10 '>
+                       <div className='text-center p-2 mb-5 w-full md:mb-10 '>
                             <ViewCatalogue />
                         </div>
                         <div>
@@ -171,7 +172,7 @@ export default function Home({isSignIn, setCartItems, setIsSignIn, signInWelcome
             </div>
 
             <div className='hidden lg:block'>
-                <div className='lg:hidden bg-gradient-to-tr from-black to-red-500 text-center p-2 mb-5 w-full md:mb-10 '>
+                <div className='lg:hidden text-center p-2 mb-5 w-full md:mb-10 '>
                     <ViewCatalogue />
                 </div>
                 <div className='hidden my-10 text-center lg:block lg:px-5 lg:w-3/4 lg:h-40 lg:py-14 lg:mx-auto relative'>

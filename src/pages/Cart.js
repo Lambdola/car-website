@@ -13,7 +13,7 @@ function Cart({ isSignIn ,setIsSignIn, setCartItems, cartItems, count, setCount,
    
     useEffect(()=>{
         window.scrollTo(0, 0);
-
+        // alert("Cart")
         let user = localStorage.getItem("user");
         let test;
         try {
@@ -24,21 +24,22 @@ function Cart({ isSignIn ,setIsSignIn, setCartItems, cartItems, count, setCount,
         }
     
         if (user.loggedIn === "true"){
+            // alert("CCart")
             setIsSignIn(true);
-            let user = localStorage.getItem("user");
+            // let user = localStorage.getItem("user");
             let cart = localStorage.getItem(user.email);
             try {
                 cart = JSON.parse(cart);
-                cart = cart.filter((cnt) => cnt.Count !== 0);
+                // cart = cart.filter((cnt) => cnt.Count !== 0);
                 if (cart.length > 0){
-                    setCartItems(n => cart);
+                    setCartItems(n => setCartItems(cart))
                     localStorage.setItem(`${user.email}`, JSON.stringify(cart));
                 } else {
-                    setCartItems(n => []);
+                    setCartItems(n => setCartItems([]));
                     localStorage.setItem(`${user.email}`, JSON.stringify(cart));
                 }
             } catch (error) {
-                setCartItems(n => []);
+                setCartItems(n => setCartItems([]));
             }
         }
     },[]);
@@ -107,7 +108,7 @@ function Cart({ isSignIn ,setIsSignIn, setCartItems, cartItems, count, setCount,
                 copyCart.map( items => {
                     if (items.objectId) {
                         return (
-                            <div className='md:p-2'>
+                            <div key={items.objectId + items.tag} className='md:p-2'>
                                 <CartInfo key={items.objectId} salesInfo={items} image={items.url} setCartItems={setCartItems} cartItems={cartItems} setCount={setCount} cartCount={cartCount} totalPrice={totalPrice} setTotalPrice={setTotalPrice} priceFormat={priceFormat} /> 
                             </div>
                             );

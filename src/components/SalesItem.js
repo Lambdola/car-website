@@ -10,7 +10,7 @@ function SalesItem({item, image, setSalesInfo}) {
             <div className='w-full h-2/3 overflow-hidden bg-white relative'>
                 {item.url ? <img src={item.url} className='w-80 border-b-2 border-black absolute bottom-0' /> : <img src={image} className='w-80 border-b-2 border-black absolute bottom-0' /> }
             </div>
-            <div className='p-2'>
+            <div className='p-2 h-1/3 overflow-scroll no-scrollbar'>
                 <h2 className='font-bold text-purple-800 text-lg'>{item.Year + " " + item.Make + " " + item.Model + " " + item.Category}</h2>
                 {item.Transmission && <p className='font-bold text-slate-800'>Transmission : {item.Transmission}</p>}
                 {item.Color && <p className='font-bold text-slate-800'>Color : {item.Color}</p>}
