@@ -1,4 +1,4 @@
-import React , {useEffect} from 'react';
+import React , {useEffect, useState} from 'react';
 import DirectionsCarOutlinedIcon from '@mui/icons-material/DirectionsCarOutlined';
 import PaidOutlinedIcon from '@mui/icons-material/PaidOutlined';
 import KeyOutlinedIcon from '@mui/icons-material/KeyOutlined';
@@ -9,6 +9,7 @@ import { NavLink } from 'react-router-dom';
 
 
 function AboutUs({ isSignIn, setIsSignIn}) {
+  const [team, setTeam] = useState("sales");
   useEffect(()=> {
     // window.scrollTo(0, 0);
     let user = localStorage.getItem("user");
@@ -23,6 +24,18 @@ function AboutUs({ isSignIn, setIsSignIn}) {
       setIsSignIn(true);
     }
   },[]);
+
+  function handleClick(param) {
+    if (param === "sales") {
+      setTeam("sales")
+    }
+    if (param === "rentals") {
+      setTeam("rentals")
+    }
+    if (param === "repairs") {
+      setTeam("repairs")
+    }
+  }
 
   return (
    <div className=''>
@@ -113,14 +126,29 @@ function AboutUs({ isSignIn, setIsSignIn}) {
       <button className='w-full h-10 text-lg bg-purple-900 text-white'><NavLink to="/services">OUR SERVICES</NavLink></button>
     </div>
 
-    <div className='w-full h-[30rem] bg-gray-600 mb-10'>
-
-      <img src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=300" alt="team" className='h-full w-full object-contain' />
+    <div className='w-full bg-gray-950  mb-10'>
+      <img src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=300" alt="team" className='w-full' />
+      <div className='p-2 text-slate-200 text-lg'>
+        At Trizent Autos, we work as a team to bring our customers full satisfaction. We have a wide range of teams to attend to your needs be it on sales, repairs or rentals.
+        We boast of having an excellent team as one of the perks and reasons of why you should be working with us.
+        We are a company that incorporates all thre teams into one. 
+        At Trizent Autos, your car troubles will be solved.
+      </div>
     </div>
 
     <div>
-      <h2 className='text-gray-950 font-bold text-4xl ml-3'>Staffs</h2>
-      <div className='p-4'>
+      <div className='px-4 py-2 space-y-2 mb-5'>
+        <h3 className='text-2xl text-gray-950 font-bold'>Our Teams</h3>
+        <div className='flex justify-start gap-2 text-lg'>
+          <button onClick={() => handleClick("sales")} className={`${team === "sales" ? "border-purple-800 font-bold text-gray-900" : "border-transparent" } text-gray-800 font-semibold border-b-4 `}>Sales Team</button>
+          <button onClick={() => handleClick("rentals")} className={`${team === "rentals" ? "border-purple-800 font-bold text-gray-900" : "border-transparent" } text-gray-800 font-semibold border-b-4 `} >Rentals Team</button>
+          <button onClick={() => handleClick("repairs")} className={`${team === "repairs" ? "border-purple-800 font-bold text-gray-900" : "border-transparent" } text-gray-800 font-semibold border-b-4 `}>Repairs Team</button>
+        </div>
+        <hr />
+      </div>
+      
+      {team === "sales" && 
+        <div className='p-4'>
         <h3 className='text-2xl text-purple-600 font-bold mb-5  '>Sales Team</h3>
         <div className='space-y-4'>
           {[1,2,3,4,5].map(val => {
@@ -137,7 +165,9 @@ function AboutUs({ isSignIn, setIsSignIn}) {
           })}
         </div>
       </div>
-      <div className='p-4'>
+      }
+      {team === "rentals" && 
+        <div className='p-4'>
         <h3 className='text-2xl text-purple-600 font-bold mb-5  '>Rentals Team</h3>
         <div className='space-y-4'>
           {[1,2,3,4,5].map(val => {
@@ -154,7 +184,9 @@ function AboutUs({ isSignIn, setIsSignIn}) {
           })}
         </div>
       </div>
-      <div className='p-4'>
+      }
+      {team === "repairs" && 
+        <div className='p-4'>
         <h3 className='text-2xl text-purple-600 font-bold mb-5  '>Repairs Team</h3>
         <div className='space-y-4'>
           {[1,2,3,4,5].map(val => {
@@ -171,7 +203,14 @@ function AboutUs({ isSignIn, setIsSignIn}) {
           })}
         </div>
       </div>
+      }
     </div>
+
+    <div className='text-center'>
+      <button className='bg-slate-200 bg-opacity-50 text-center px-12 py-7 text-xl font-bold text-purple-800 hover:bg-opacity-100 border-2 rounded-md border-purple-800 hover:bg-purple-800 hover:text-white'><NavLink to="/reviews">Customers Feedbacks</NavLink></button>
+    </div>
+
+    
    
 
 
