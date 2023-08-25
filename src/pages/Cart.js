@@ -6,31 +6,31 @@ import BackToTop from '../components/BackToTop';
 import { useNavigate } from 'react-router-dom';
 import { toMoneyString } from '../toMoneyString';
 
-function Cart({ isSignIn ,setIsSignIn, setCartItems, cartItems, count, setCount, cartCount,totalPrice, setTotalPrice}) {
+function Cart({ setCartItems, cartItems, count, setCount, cartCount,totalPrice, setTotalPrice}) {
     const [ removePrompt, setRemovePrompt ] = useState("hide");
     const [repairItem, setRepairItem]= useState({});
     let navigate = useNavigate();
    
     useEffect(()=>{
         window.scrollTo(0, 0);
+        // window.location.reload();
         // alert("Cart")
         let user = localStorage.getItem("user");
         let test;
         try {
-        user = JSON.parse(user);
-        test = user.loggedIn;
+            user = JSON.parse(user);
+            test = user.loggedIn;
         } catch (error) {
-        user = { "loggedIn": "false" };
+            user = { "loggedIn": "false" };
         }
     
         if (user.loggedIn === "true"){
             // alert("CCart")
-            setIsSignIn(true);
-            // let user = localStorage.getItem("user");
+            // setIsSignIn(true);
+
             let cart = localStorage.getItem(user.email);
             try {
                 cart = JSON.parse(cart);
-                // cart = cart.filter((cnt) => cnt.Count !== 0);
                 if (cart.length > 0){
                     setCartItems(n => setCartItems(cart))
                     localStorage.setItem(`${user.email}`, JSON.stringify(cart));
@@ -41,6 +41,8 @@ function Cart({ isSignIn ,setIsSignIn, setCartItems, cartItems, count, setCount,
             } catch (error) {
                 setCartItems(n => setCartItems([]));
             }
+        } else {
+            navigate("/sign-in");
         }
     },[]);
 
@@ -93,7 +95,13 @@ function Cart({ isSignIn ,setIsSignIn, setCartItems, cartItems, count, setCount,
         setTotalPrice(0);
     }
 
-    let copyCart = cartItems.filter((items) => (items.Count > 0 || items.tag === "Repairs"));
+    let copyCart;
+    try {
+        copyCart = cartItems.filter((items) => (items.Count > 0 || items.tag === "Repairs"));
+    } catch (error) {
+        copyCart = [];
+    }
+   
     return (
     <div className='page-transition'>
         { removePrompt === "show" && <RemovePrompt setRemovePrompt={setRemovePrompt} cartItems={cartItems} setCartItems={setCartItems} repairItem={repairItem} setRepairItem={setRepairItem} tag="Repairs" /> }

@@ -59,18 +59,18 @@ export default function AppChild({isSignIn, setIsSignIn}) {
     }
   },[isSignIn]);
 
-  
+  // xsm:bg-lime-500
+  // sm:bg-red-500 
+  // md:bg-fuchsia-500
+  // lg:bg-yellow-500
+  // xl:bg-orange-600
+  // 2xl:bg-blue-500 
   
  
 
   return (
     <div className='relative selection:bg-violet-400
-    xsm:bg-lime-500
-    sm:bg-red-500 
-    md:bg-fuchsia-500
-    lg:bg-yellow-500
-    xl:bg-orange-600
-    2xl:bg-blue-500 
+
 
     '>
       <div className=' md:w-full md:z-10'>

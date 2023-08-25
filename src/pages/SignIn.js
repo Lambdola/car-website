@@ -45,7 +45,7 @@ function NewMember({handleLogInDisplay, handleSubmit,details, handleDetailsChang
         </div>
         <div>
           <p>Picture</p>
-          <input required name="picture" type="file" onChange={handleDetailsChange} />
+          <input required name="picture" type="file" onChange={handleDetailsChange} className='bg-purple-300' />
         </div>
         <div>
            <p>Phone Number</p>
@@ -172,6 +172,9 @@ function SignIn({setIsSignIn, signInWelcome, setSignInWelcome}) {
     let name = e.target.name;
     let value = e.target.value;
 
+    if (name === "picture"){
+      alert(value);
+    }
     if (name === "password" || name === "confirmPassword") {
       value = hash(value);
     }

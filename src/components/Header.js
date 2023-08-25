@@ -7,6 +7,7 @@ import CartContent from './CartContent';
 import { useEffect, useState } from 'react';
 import { ArrowDropUp } from '@mui/icons-material';
 import SignIn from '../pages/SignIn';
+import { Avatar } from '@mui/material';
 
 export default function Header({isSignIn, setIsSignIn, cartItems, cartCount, setCartCount}) {
     const [logIn, setLogIn] = useState(false);
@@ -179,12 +180,14 @@ export default function Header({isSignIn, setIsSignIn, cartItems, cartCount, set
                             <NavLink to="/contact-us" className={`${contactUs} active:bg-green-600 font-bold block rounded-xl p-2 text-center text-sm mt-3 md:bg-transparent md:hover:bg-transparent md:hover:text-purple-500 md:px-0 md:text-lg`}>Contact Us</NavLink>
                             {contactUs === active && <div className='hidden md:block md:relative md:bottom-6'><ArrowDropUp sx={{fontSize:45, color:'whitesmoke' }} /></div> }
                         </li>
-                            
+            
                         <li><NavLink to ="/" onClick={handleLogOut} className='bg-red-500 hover:bg-red-800 text-white font-bold block rounded-xl p-2 text-center text-sm mt-3 md:bg-transparent md:hover:bg-transparent md:hover:text-red-500 md:px-0 md:text-lg'>Log Out</NavLink></li>
                     </ul>) :
                     (<ul  className='md:flex md:justify-around md:mt-14 md:w-full' >
                         <li className='mt-16 flex flex-wrap justify-center md:absolute md:right-3 md:h-24 md:px-2 md:-mt-10 md:flex-row text-center'>
-                            <div className='w-20 h-20 rounded-full bg-gray-700 border-4 border-purple-800 hover:border-white overflow-hidden text-center md:h-14 md:w-14'> </div>
+                            <div className='flex align-middle justify-center pt-4 w-20 h-20 rounded-full bg-[#dddddd] border-4 border-purple-800 hover:border-white overflow-hidden text-center md:h-14 md:w-14'>
+                                <Avatar />
+                            </div>
                         </li>
                         <li><NavLink to="/services" className={`${services} active:bg-green-600 font-bold block rounded-xl p-2 text-center text-sm mt-3 md:bg-transparent md:hover:bg-transparent md:hover:text-purple-500 md:px-0 md:text-xl`}>Services</NavLink></li>
                         <li><NavLink to="/blog" className={`${blog} active:bg-green-600 font-bold block rounded-xl p-2 text-center text-sm mt-3 md:bg-transparent md:hover:bg-transparent md:hover:text-purple-500 md:px-0  md:text-xl`}>Blog</NavLink></li>

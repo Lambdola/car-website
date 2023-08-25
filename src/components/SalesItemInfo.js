@@ -19,6 +19,7 @@ function SalesItemInfo({salesInfo, car1, setCartItems, cartItems, tag}) {
     let navigate = useNavigate();
     useEffect(()=> {
         window.scrollTo(0, 0);
+        // window.location.reload();
         // alert("SalesItemInfo");
         setRentFormState("")
     }, [addedPrompt]);

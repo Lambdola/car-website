@@ -147,7 +147,7 @@ function Repairs({repairs_database, setCartItems, cartItems, repairService, setR
 			{ copyRepairsDatabase.length > 0 ? 
 				copyRepairsDatabase.map(items => {
 					return (
-						<div className='border border-black p-2 mb-5 '>
+						<div key={items.title} className='border border-black p-2 mb-5 '>
 							<div className='float-right'>
 								<div className='h-12 w-12 bg-red-500'></div>
 							</div>
