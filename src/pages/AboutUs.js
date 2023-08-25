@@ -48,7 +48,7 @@ function AboutUs({ isSignIn, setIsSignIn}) {
     </div>
     <div className='flex justify-evenly '>
       <div className='flex flex-wrap flex-col page-transition'>
-        <div className="-mb-2 ml-3 p-2">
+        <div className="-mb-2 ml-1 p-2">
           <PaidOutlinedIcon sx={{fontSize:35}} className='text-white' />
         </div>
         <div>
@@ -57,7 +57,7 @@ function AboutUs({ isSignIn, setIsSignIn}) {
       </div>
 
       <div className='flex flex-wrap flex-col page-transition '>
-        <div className="-mb-2 ml-3 p-2">
+        <div className="-mb-2 ml-1 p-2">
           <KeyOutlinedIcon sx={{fontSize:35}} className='text-white' />
         </div>
         <div>
@@ -66,7 +66,7 @@ function AboutUs({ isSignIn, setIsSignIn}) {
       </div>
 
       <div className='flex flex-wrap flex-col page-transition '>
-        <div className="-mb-2 ml-3 p-2">
+        <div className="-mb-2 ml-1 p-2">
           <HandymanOutlinedIcon sx={{fontSize:35}} className='text-white' />
         </div>
         <div>
