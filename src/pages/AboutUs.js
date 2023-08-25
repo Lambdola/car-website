@@ -6,6 +6,7 @@ import HandymanOutlinedIcon from '@mui/icons-material/HandymanOutlined';
 import { purple } from '@mui/material/colors';
 import mobilescreen from '../images/mobilescreen.png';
 import { NavLink } from 'react-router-dom';
+import Footer from '../components/Footer';
 
 
 function AboutUs({ isSignIn, setIsSignIn}) {
@@ -119,7 +120,8 @@ function AboutUs({ isSignIn, setIsSignIn}) {
       </div>
     </div>
 
-    <div className='w-full px-5 mb-10'>
+    <div className='w-full px-5 my-20'>
+      <p className='text-gray-950 text-xl font-semibold '>Whether you are shopping for a new car or looking for a place to rent or repair a car, the next step in your journey starts here. Explore the possibilities.</p>
        <div className='h-48 w-24 mx-auto text-center my-10'>
         <img src={mobilescreen} alt="phone" className='h-full shadow-lg' />
       </div>
@@ -208,6 +210,10 @@ function AboutUs({ isSignIn, setIsSignIn}) {
 
     <div className='text-center'>
       <button className='bg-slate-200 bg-opacity-50 text-center px-12 py-7 text-xl font-bold text-purple-800 hover:bg-opacity-100 border-2 rounded-md border-purple-800 hover:bg-purple-800 hover:text-white'><NavLink to="/reviews">Customers Feedbacks</NavLink></button>
+    </div>
+
+    <div>
+      <Footer />
     </div>
 
     
