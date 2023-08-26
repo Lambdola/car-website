@@ -72,7 +72,7 @@ export default function Home({isSignIn, setCartItems, setIsSignIn, signInWelcome
                     '>
                         <h2 className='text-lg mb-5 font-bold text-slate-900 lg:portrait:mb-0 lg:portrait:mt-10 lg:portrait:text-2xl xl:landscape:text-3xl xl:landscape:my-10 '>BUSINESS HOURS</h2>
                         <div>
-                            <p className='underline'>MvON - FRI</p>
+                            <p className='underline'>MON - FRI</p>
                             <p>8:00 AM - 6:00 PM</p>
                         </div>
                         <div>

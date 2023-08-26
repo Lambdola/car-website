@@ -44,16 +44,11 @@ function NewMember({handleLogInDisplay, handleSubmit,details, handleDetailsChang
           <input required name="lastName" type="text" value={details.lastName} onChange={handleDetailsChange} placeholder="Last Name" autoComplete="off" className='border border-slate-400 rounded py-1 px-3 w-full' />
         </div>
         <div>
-          <p>Picture</p>
-          <input required name="picture" type="file" onChange={handleDetailsChange} className='bg-purple-300' />
-        </div>
-        <div>
            <p>Phone Number</p>
-          <input required name="phoneNumber" type="text" value={details.phoneNumber} onChange={handleDetailsChange} placeholder="Phone Number" autoComplete="off" className='border border-slate-400 rounded py-1 px-3 w-full' />
+          <input required maxLength={11} name="phoneNumber" type="text" value={details.phoneNumber} onChange={handleDetailsChange} placeholder="Phone Number" autoComplete="off" className='border border-slate-400 rounded py-1 px-3 w-full' />
         </div>
         <div>
            <p>Address</p>
-          
           <textarea required name="address" value={details.address} onChange={handleDetailsChange} placeholder='Address' autoComplete="off" className='border border-slate-400 rounded py-1 px-3 w-full h-20' />
         </div>
         <div>
@@ -125,7 +120,6 @@ function SignIn({setIsSignIn, signInWelcome, setSignInWelcome}) {
     "confirmPassword": "",
     "firstName": "",
     "lastName": "",
-    "picture": "",
     "phoneNumber": "",
     "address": "",
     "city": "",
