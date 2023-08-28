@@ -13,7 +13,7 @@ import BackToTop from '../components/BackToTop';
 function AboutUs({ isSignIn, setIsSignIn}) {
   const [team, setTeam] = useState("sales");
   useEffect(()=> {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
     let user = localStorage.getItem("user");
     let test;
     try {
@@ -184,7 +184,7 @@ function AboutUs({ isSignIn, setIsSignIn}) {
             return (
               <div key={val} className='text-center bg-stone-300 rounded-lg py-5 space-y-8'>
                 <div className='space-y-1'>
-                  <div className='h-24 w-24 bg-red-300 rounded-full mx-auto'></div>
+                  <div className='h-24 w-24 bg-yellow-300 rounded-full mx-auto'></div>
                   <p className='text-gray-950 font-bold text-xl font-roboto'>Name</p>
                   <p className='text-gray-600 font-bold text-lg'>Position Held</p>
                 </div>
@@ -203,7 +203,7 @@ function AboutUs({ isSignIn, setIsSignIn}) {
             return (
               <div key={val} className='text-center bg-stone-300 rounded-lg py-5 space-y-8'>
                 <div className='space-y-1'>
-                  <div className='h-24 w-24 bg-red-300 rounded-full mx-auto'></div>
+                  <div className='h-24 w-24 bg-blue-300 rounded-full mx-auto'></div>
                   <p className='text-gray-950 font-bold text-xl font-roboto'>Name</p>
                   <p className='text-gray-600 font-bold text-lg'>Position Held</p>
                 </div>
@@ -217,23 +217,13 @@ function AboutUs({ isSignIn, setIsSignIn}) {
       </div>
     </div>
 
-    <div>
-      <h3>Our Achievements</h3>
-    </div>
-
-    <div className='text-center'>
+    <div className='text-center mt-12'>
       <button className='bg-slate-200 bg-opacity-50 text-center px-12 py-7 text-xl font-bold text-purple-800 hover:bg-opacity-100 border-2 rounded-md border-purple-800 hover:bg-purple-800 hover:text-white'><NavLink to="/reviews">Customers Feedbacks</NavLink></button>
     </div>
 
-
-    <div>
+    <div className='mt-14'>
       <Footer />
     </div>
-
-    
-   
-
-
     
    </div>
   );

@@ -23,7 +23,7 @@ export default function QuickFind() {
                     </div>
                     <div className='text-white'>
                         <h2 className='font-bold text-2xl font-mono'>WE SELL</h2>
-                        <p className='font-roboto font-light text-lg '>
+                        <p className='font-roboto font-medium text-lg '>
                         Are you ready to experience the thrill of driving in style? Look no further than Trizent Autos, where luxury and performance meet. Our curated collection of top-tier vehicles will leave you speechless. Whether you're seeking a sleek sedan, a rugged SUV, or a powerful sports car, we have the perfect ride to match your desires.
                         </p>
                         <p>Take a look at some of our collections.</p>
@@ -41,7 +41,7 @@ export default function QuickFind() {
                     </div>
                     <div className='text-white'>
                         <h2 className='font-bold text-2xl font-mono'>WE RENT</h2>
-                        <p className='font-roboto font-light text-lg '>
+                        <p className='font-roboto font-medium text-lg '>
                         At Trizent Autos, we understand that every traveler has unique preferences. That's why we offer a wide range of vehicles to suit your needs. Whether you're seeking an efficient compact car, a spacious SUV for your group, or a luxurious sedan for a business trip, we have the ideal ride to make your journey comfortable and memorable.
                         </p>
                         <p>Take a look at some of our collections.</p>
@@ -59,7 +59,7 @@ export default function QuickFind() {
                     </div>
                     <div className='text-white'>
                         <h2 className='font-bold text-2xl font-mono'>WE REPAIR</h2>
-                        <p className='font-roboto font-light text-lg '>
+                        <p className='font-roboto font-medium text-lg '>
                         At Trizent Autos, we understand the importance of a well-functioning vehicle. Our team of skilled mechanics specializes in diagnosing and repairing a wide range of automotive issues. From minor maintenance tasks to complex repairs, we have the expertise to keep your car running smoothly.
                         </p>
                         <p >Take a look at some of the services we offer.</p>

@@ -9,7 +9,7 @@ import { toMoneyString } from '../toMoneyString';
 function Cart({ setCartItems, cartItems, count, setCount, cartCount,totalPrice, setTotalPrice}) {
     const [ removePrompt, setRemovePrompt ] = useState("hide");
     const [repairItem, setRepairItem]= useState({});
-    let navigate = useNavigate();
+    let navigate = useNavigate(); 
    
     useEffect(()=>{
         window.scrollTo(0, 0);
@@ -44,6 +44,7 @@ function Cart({ setCartItems, cartItems, count, setCount, cartCount,totalPrice, 
         } else {
             navigate("/sign-in");
         }
+        // window.location.reload();
     },[]);
 
     
@@ -123,7 +124,10 @@ function Cart({ setCartItems, cartItems, count, setCount, cartCount,totalPrice, 
                     } else if (items.title) {
                         return (
                             <>
-                                <div className=' w-80 h-[32rem] mx-auto mb-10 px-3 py-2 pb-3 rounded-lg border-4 border-purple-900 space-y-2'>
+                                <div className=' w-80 mx-auto mb-10 px-3 py-2 pb-3 rounded-lg border-4 border-purple-900 space-y-2'>
+                                    <div className='w-2/3 h-40 mx-auto'>
+                                        <img src={items.url} alt={items.title} className='w-full h-full' />
+                                    </div>
                                     <p className='text-purple-900 text-md text-center font-roboto font-bold -mb-2'>{items.title}</p>
                                     <div className='border-2 border-violet-700 flex'></div>
                                     <p className='font-bold text-purple-800 text-lg text-center'>{items.year + " " + items.make + " " + items.model + " " + items.category}</p>
