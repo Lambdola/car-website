@@ -127,7 +127,8 @@ function Repairs({repairs_database, setCartItems, cartItems, repairService, setR
 
 	function handleDetailsChange(e) {
 		let name = e.target.name;
-		let value = e.target.value;
+		let value = e.target.value; 
+		
 		setDetails({...details,[name]: value });
 	}
 
