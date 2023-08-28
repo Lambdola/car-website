@@ -24,7 +24,7 @@ function ContactUs({isSignIn, setIsSignIn, cartItems}) {
   ];
   const [faqFilter, setFaqFilter] = useState(faq);
   useEffect(()=> {
-    // window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
     let user = localStorage.getItem("user");
     let test;
     try {
