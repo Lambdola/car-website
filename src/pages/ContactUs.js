@@ -18,10 +18,10 @@ function ContactUs({isSignIn, setIsSignIn, cartItems}) {
     {"faq": "Question 5: Sales", "answer": "Answer 5: Sales", "category": "Sales"},
     {"faq": "Question 6: Repairs", "answer": "Answer 6: Repairs", "category": "Repairs"},
     {"faq": "Question 7: Repairs", "answer": "Answer 7: Repairs", "category": "Repairs"},
-    {"faq": "Question 7: Repairs", "answer": "Answer 8: Repairs", "category": "Repairs"},
+    {"faq": "Question 8: Repairs", "answer": "Answer 8: Repairs", "category": "Repairs"},
     {"faq": "Question 9: Rentals", "answer": "Answer 9: Rentals", "category": "Rentals"},
     {"faq": "Question 10: Sales", "answer": "Answer 10: Sales", "category": "Sales"}
-  ]
+  ];
   const [faqFilter, setFaqFilter] = useState(faq);
   useEffect(()=> {
     // window.scrollTo(0, 0);
@@ -49,9 +49,10 @@ function ContactUs({isSignIn, setIsSignIn, cartItems}) {
   function handleChange(e){
     let value = e.target.value;
     if (value !== "All Categories") {
+      alert(value)
       let filter = faq.filter(items => items.category === value )
       setFaqFilter(filter);
-      return 0;
+      return ;
     }
     setFaqFilter(faq);
 
@@ -192,7 +193,7 @@ function ContactUs({isSignIn, setIsSignIn, cartItems}) {
           </div>
           <div className='relative'>
              <p className='absolute left-4 top-1 text-sm font-bold text-slate-700' >Select FAQ</p>
-            <select defaultValue="All Categories" onChange={handleChange} className='w-full h-16 border-2 border-purple-400 rounded px-3 pt-4 font-semibold text-lg text-gray-950'>
+            <select onChange={handleChange} className='w-full h-16 border-2 border-purple-400 rounded px-3 pt-4 font-semibold text-lg text-gray-950'>
               <option value="All Categories" >All Categories</option>
               <option value="Sales">Sales</option>
               <option value="Rentals">Rentals</option>
