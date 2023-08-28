@@ -143,7 +143,7 @@ function Repairs({repairs_database, setCartItems, cartItems, repairService, setR
 
 	return (
 		<div className=''>
-			<form onSubmit={handleSearchSubmit} className='flex justify-between md:text-2xl'>
+			<form onSubmit={handleSearchSubmit} className='flex justify-center md:text-2xl'>
 				<input type="text" value={keyWords.search} onChange={(e)=> setKeyWords({...keyWords, "search": e.target.value})} placeholder='Search for a repair service' className='w-72 border border-purple-700 rounded-lg p-2 m-2 md:w-full md:h-14' />
 				<button type="submit" className='pt-1 mr-2 hover:bg-purple-200 hover:rounded-lg active:bg-green-600'>
 					<Search sx={{fontSize: 40, color: purple[800]}} />
@@ -162,7 +162,7 @@ function Repairs({repairs_database, setCartItems, cartItems, repairService, setR
 								</div> : <div className='h-20 w-20 bg-red-500'></div>}
 							</div>
 							<h3 className='font-bold text-black text-xl'>{items.title}</h3>
-							<p className='text-gray-800 font-medium'>{items.content}</p>
+							<p className='text-gray-800 font-normal'>{items.content}</p>
 							<div className='p-1'>
 								<button onClick={() => handleShowService(items)} className='bg-blue-900 w-full text-white font-bold text-center py-2 block mt-3'>Schedule Service</button>
 							</div>

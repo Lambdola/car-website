@@ -13,7 +13,7 @@ import BackToTop from '../components/BackToTop';
 function AboutUs({ isSignIn, setIsSignIn}) {
   const [team, setTeam] = useState("sales");
   useEffect(()=> {
-    // window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
     let user = localStorage.getItem("user");
     let test;
     try {

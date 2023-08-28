@@ -117,14 +117,13 @@ function Cart({ setCartItems, cartItems, count, setCount, cartCount,totalPrice, 
                 copyCart.map( items => {
                     if (items.objectId) {
                         return (
-                            <div key={items.objectId + items.tag} className='md:p-2'>
-                                <CartInfo key={items.objectId} salesInfo={items} image={items.url} setCartItems={setCartItems} cartItems={cartItems} setCount={setCount} cartCount={cartCount} totalPrice={totalPrice} setTotalPrice={setTotalPrice} priceFormat={priceFormat} /> 
+                            <div key={items.objectId + items.Tag  } className='md:p-2'>
+                                <CartInfo salesInfo={items} image={items.url} setCartItems={setCartItems} cartItems={cartItems} setCount={setCount} cartCount={cartCount} totalPrice={totalPrice} setTotalPrice={setTotalPrice} priceFormat={priceFormat} /> 
                             </div>
                             );
                     } else if (items.title) {
                         return (
-                            <>
-                                <div className=' w-80 mx-auto mb-10 px-3 py-2 pb-3 rounded-lg border-4 border-purple-900 space-y-2'>
+                                <div key={items.title} className=' w-80 mx-auto mb-10 px-3 py-2 pb-3 rounded-lg border-4 border-purple-900 space-y-2'>
                                     <div className='w-2/3 h-40 mx-auto'>
                                         <img src={items.url} alt={items.title} className='w-full h-full' />
                                     </div>
@@ -145,10 +144,9 @@ function Cart({ setCartItems, cartItems, count, setCount, cartCount,totalPrice, 
                                         <Remove showPrompt={showPrompt} items={items} />
                                     </div>
                                 </div>
-                            </>
+
                         );
                     }
-                    return 0;
                 } )
                  : 
                 <h2 className='text-black text-4xl font-bold text-center font-roboto'>No Items Yet</h2>
